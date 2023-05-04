@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">SSUtudy</string>
+    <string name="smart_study_for_u">Smart Study for U</string>
+    <string name="login_desc">로그인을 통해\n 관심 정보를 기반으로 한\n당신에게 맞춘 스터디를 찾아보세요</string>
+    <string name="ssutudy_with">SSUtudy With</string>
+    <string name="id">ID</string>
+    <string name="input_id">아이디를 입력하세요.</string>
+    <string name="pw">PW</string>
+    <string name="input_pw">비밀번호를 입력하세요.</string>
+    <string name="login">로그인</string>
+    <string name="not_yet_sign_up">아직 회원이 아니신가요?</string>
+    <string name="sign_up">가입하기</string>
 </resources>
