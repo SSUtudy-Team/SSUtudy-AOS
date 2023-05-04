@@ -1,7 +1,8 @@
-package com.android.ssutudy
+package com.android.ssutudy.presentation.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.android.ssutudy.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
