@@ -16,4 +16,9 @@
     <string name="password_check">Password 확인</string>
     <string name="input_password_check">비밀번호를 재입력하세요.</string>
     <string name="next">다음</string>
+    <string name="grade">학년</string>
+    <string name="major">학과</string>
+    <string name="input_major">학과를 입력하세요</string>
+    <string name="category_of_interest">관심 카테고리</string>
+    <string name="sign_up_complete">회원가입 완료</string>
 </resources>
