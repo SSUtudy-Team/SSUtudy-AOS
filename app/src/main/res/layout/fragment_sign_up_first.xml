@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_stroke_gray_d5d5d5_1_radius_10"
+                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
                 android:hint="@string/input_name"
                 android:inputType="text"
                 android:maxLines="1"
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_stroke_gray_d5d5d5_1_radius_10"
+                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
                 android:hint="@string/input_id"
                 android:inputType="text"
                 android:maxLines="1"
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_stroke_gray_d5d5d5_1_radius_10"
+                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
                 android:hint="@string/input_pw"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -117,7 +117,7 @@
                 android:textColorHint="@color/gray_9e9e9e" />
 
             <TextView
-                android:id="@+id/tv_login_first_id"
+                android:id="@+id/tv_sign_up_first_pw_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
@@ -125,11 +125,11 @@
                 android:textAppearance="@style/M16" />
 
             <EditText
-                android:id="@+id/et_login_first_pw_check"
+                android:id="@+id/et_login_sign_up_first_pw_check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_stroke_gray_d5d5d5_1_radius_10"
+                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
                 android:hint="@string/input_password_check"
                 android:inputType="textPassword"
                 android:maxLines="1"
@@ -147,7 +147,7 @@
                 android:layout_gravity="bottom"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/rectangle_stroke_gray_d5d5d5_1_radius_10"
+                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
                 android:text="@string/next" />
         </LinearLayout>
     </ScrollView>

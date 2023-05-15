@@ -77,10 +77,10 @@ class SignUpFirstFragment : Fragment() {
     private fun setNextBtnColor() {
         if (activityViewModel.isAbleToNavigateNextPage()) binding.btnSignUpFirst.background =
             ContextCompat.getDrawable(
-                requireActivity(), R.drawable.rectangle_solid_sky_9cd6d3_radius_10
+                requireActivity(), R.drawable.bg_solid_sky_9cd6d3_radius_10
             )
         else binding.btnSignUpFirst.background = ContextCompat.getDrawable(
-            requireActivity(), R.drawable.rectangle_stroke_gray_d5d5d5_1_radius_10
+            requireActivity(), R.drawable.bg_stroke_gray_d5d5d5_1_radius_10
         )
     }
 
