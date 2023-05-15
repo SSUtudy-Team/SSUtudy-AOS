@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.android.ssutudy.databinding.FragmentSignUpSecondBinding
+import com.android.ssutudy.util.extensions.submitList
 
 class SignUpSecondFragment : Fragment() {
     private var _binding: FragmentSignUpSecondBinding? = null
@@ -23,6 +24,10 @@ class SignUpSecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.layoutSignUpSecondCategory.submitList(
+            listOf("s123", "조차누", "김준서", "임화랑", "12312309213909")
+        )
     }
 
     override fun onDestroyView() {
