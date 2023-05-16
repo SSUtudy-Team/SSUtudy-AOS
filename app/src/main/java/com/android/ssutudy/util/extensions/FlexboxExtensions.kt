@@ -17,8 +17,8 @@ fun FlexboxLayout.addTextview(textResource: String) {
         (LayoutInflater.from(context)
             .inflate(R.layout.view_category_of_interest, null) as TextView).apply {
             text = textResource
-            setOnClickListener {
-                it.isSelected = !it.isSelected
+            setOnClickListener { textView ->
+                textView.isSelected = !textView.isSelected
             }
         }
 
