@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_selector_sky_gray"
+    android:background="@drawable/bg_selector_gray_sky_radius_50"
     android:paddingHorizontal="18dp"
     android:paddingVertical="12dp"
     android:textAppearance="@style/M16"
