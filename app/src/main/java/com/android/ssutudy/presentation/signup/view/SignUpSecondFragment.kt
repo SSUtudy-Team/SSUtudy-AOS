@@ -41,12 +41,6 @@ class SignUpSecondFragment : Fragment() {
                 R.array.spinner_grade, R.layout.item_sign_up_second_spinner
             )
         }
-
-//        binding.spinnerLoginSecondGrade.adapter = ArrayAdapter<String>(
-//            requireContext(),
-//            R.layout.item_sign_up_second_spinner,
-//            requireContext().resources.getStringArray(com.android.ssutudy.R.array.spinner_grade)
-//        )
     }
 
     override fun onDestroyView() {
