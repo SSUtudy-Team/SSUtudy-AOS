@@ -21,4 +21,11 @@
     <string name="input_major">학과를 입력하세요</string>
     <string name="category_of_interest">관심 카테고리</string>
     <string name="sign_up_complete">회원가입 완료</string>
+
+    <string-array name="spinner_grade">
+        <item>1학년</item>
+        <item>2학년</item>
+        <item>3학년</item>
+        <item>4학년</item>
+    </string-array>
 </resources>

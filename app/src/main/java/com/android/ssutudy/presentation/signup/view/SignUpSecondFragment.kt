@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import com.android.ssutudy.R
 import com.android.ssutudy.databinding.FragmentSignUpSecondBinding
 import com.android.ssutudy.util.extensions.submitList
 
@@ -28,6 +30,23 @@ class SignUpSecondFragment : Fragment() {
         binding.layoutSignUpSecondCategory.submitList(
             listOf("s123", "조차누", "김준서", "임화랑", "12312309213909")
         )
+
+        binding.spinnerLoginSecondGrade.adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.spinner_grade, R.layout.item_sign_up_second_spinner
+        )
+        with(binding.spinnerLoginSecondGrade) {
+            adapter = ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.spinner_grade, R.layout.item_sign_up_second_spinner
+            )
+        }
+
+//        binding.spinnerLoginSecondGrade.adapter = ArrayAdapter<String>(
+//            requireContext(),
+//            R.layout.item_sign_up_second_spinner,
+//            requireContext().resources.getStringArray(com.android.ssutudy.R.array.spinner_grade)
+//        )
     }
 
     override fun onDestroyView() {

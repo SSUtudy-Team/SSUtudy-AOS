@@ -64,8 +64,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_spinner_grade"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="41dp"
+                    android:dropDownSelector="@drawable/bg_spinner_ripple"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="26dp"
+                    android:popupBackground="@drawable/bg_spinner_pop_up"
+                    android:theme="@style/SpinnerTheme"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -114,7 +117,7 @@
                 android:layout_gravity="bottom"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="30dp"
-                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
+                android:background="@drawable/bg_selector_gray_sky_radius_10"
                 android:text="@string/sign_up_complete" />
 
         </LinearLayout>
