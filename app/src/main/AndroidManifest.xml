@@ -26,6 +26,9 @@
         <activity
             android:name=".presentation.main.view.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".presentation.create.view.CreateActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
