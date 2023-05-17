@@ -22,14 +22,13 @@ class LoginActivity : AppCompatActivity() {
     private fun setLoginBtnClickEvent() {
         binding.btnLogin.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+            if (!isFinishing) finish()
         }
-        if (isFinishing) finish()
     }
 
     private fun setSignUpTextViewClickEvent() {
         binding.tvLoginSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
-        if (isFinishing) finish()
     }
 }
