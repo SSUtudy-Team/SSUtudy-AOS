@@ -22,7 +22,7 @@
             tools:context=".presentation.signup.view.SignUpActivity">
 
             <TextView
-                android:id="@+id/tv_sign_up_subtitle"
+                android:id="@+id/tv_sign_up_second_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -30,14 +30,14 @@
                 android:textAppearance="@style/M18" />
 
             <TextView
-                android:id="@+id/tv_sign_up_title"
+                android:id="@+id/tv_sign_up_second_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ssutudy_with"
                 android:textAppearance="@style/B40" />
 
             <TextView
-                android:id="@+id/tv_sign_up_desc"
+                android:id="@+id/tv_sign_up_second_desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -60,15 +60,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Spinner
-                    android:id="@+id/spinner_login_second_grade"
+                    android:id="@+id/spinner_sign_up_second_grade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_spinner_grade"
-                    android:dropDownSelector="@drawable/bg_spinner_ripple"
+                    android:background="@drawable/bg_spinner"
                     android:paddingStart="0dp"
                     android:paddingEnd="26dp"
                     android:popupBackground="@drawable/bg_spinner_pop_up"
-                    android:theme="@style/SpinnerTheme"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -81,20 +79,14 @@
                 android:text="@string/major"
                 android:textAppearance="@style/M16" />
 
-            <EditText
-                android:id="@+id/et__second_major"
+            <Spinner
+                android:id="@+id/spinner_sign_up_second_major"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
-                android:hint="@string/input_major"
-                android:inputType="text"
-                android:maxLines="1"
-                android:paddingVertical="17dp"
-                android:paddingStart="15dp"
-                android:paddingEnd="0dp"
-                android:textAppearance="@style/M14"
-                android:textColorHint="@color/gray_9e9e9e" />
+                android:background="@drawable/bg_spinner"
+                android:popupBackground="@drawable/bg_spinner_pop_up"
+                android:textAppearance="@style/M14" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,6 +101,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:flexWrap="wrap" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/least_three_categories"
+                android:textAppearance="@style/M12"
+                android:textColor="@color/gray_9e9e9e" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign_up_second"

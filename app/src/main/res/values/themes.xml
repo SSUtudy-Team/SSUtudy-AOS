@@ -22,7 +22,7 @@
         <item name="android:dividerHeight">1dp</item> <!-- divider 높이 -->
     </style>
 
-    <style name="SpinnerTheme" parent="@android:style/Widget.Material.ListView.DropDown">
+    <style name="SpinnerTheme" parent="Theme.SSUtudy">
         <item name="android:dropDownListViewStyle">@style/SpinnerDivideStyle</item>
         <item name="android:listSelector">@drawable/bg_spinner_ripple</item>
     </style>

@@ -21,11 +21,18 @@
     <string name="input_major">학과를 입력하세요</string>
     <string name="category_of_interest">관심 카테고리</string>
     <string name="sign_up_complete">회원가입 완료</string>
+    <string name="least_three_categories">* 최소 3개의 카테고리를 설정해주세요</string>
 
     <string-array name="spinner_grade">
         <item>1학년</item>
         <item>2학년</item>
         <item>3학년</item>
         <item>4학년</item>
+    </string-array>
+    <string-array name="spinner_major">
+        <item>소프트웨어학부</item>
+        <item>미디어경영</item>
+        <item>컴퓨터학부</item>
+        <item>글로벌미디어학부</item>
     </string-array>
 </resources>
