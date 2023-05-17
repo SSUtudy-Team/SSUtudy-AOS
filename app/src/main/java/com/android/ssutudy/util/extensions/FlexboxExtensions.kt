@@ -6,19 +6,36 @@ import android.widget.TextView
 import com.android.ssutudy.R
 import com.google.android.flexbox.FlexboxLayout
 
-fun FlexboxLayout.submitList(itemList: List<String>) {
+fun FlexboxLayout.submitList(
+    itemList: List<String>, plusCategoryCount: () -> Unit,
+    minusCategoryCount: () -> Unit,
+) {
     itemList.forEach { text ->
-        addTextview(text)
+        addTextview(
+            text, plusCategoryCount = plusCategoryCount,
+            minusCategoryCount = minusCategoryCount
+        )
     }
 }
 
-fun FlexboxLayout.addTextview(textResource: String) {
+fun FlexboxLayout.addTextview(
+    textResource: String,
+    plusCategoryCount: () -> Unit,
+    minusCategoryCount: () -> Unit,
+) {
     val textView =
         (LayoutInflater.from(context)
             .inflate(R.layout.view_category_of_interest, null) as TextView).apply {
             text = textResource
             setOnClickListener { textView ->
-                textView.isSelected = !textView.isSelected
+                if (textView.isSelected) {
+                    minusCategoryCount.invoke()
+                    textView.isSelected = false
+                } else {
+
+                    plusCategoryCount.invoke()
+                    textView.isSelected = true
+                }
             }
         }
 

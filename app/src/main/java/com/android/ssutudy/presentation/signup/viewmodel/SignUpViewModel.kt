@@ -26,4 +26,15 @@ class SignUpViewModel : ViewModel() {
     fun isAbleToNavigateNextPage(): Boolean {
         return (isNameValid.value == true && isIdValid.value == true && isPwValid.value == true && isPwCheckSameWithPw.value == true)
     }
+
+    private val _countCategory: MutableLiveData<Int> = MutableLiveData(0)
+    val plusCountCategoryOne = {
+        _countCategory.value = _countCategory.value?.plus(1)
+    }
+    val minusCountCategoryOne = {
+        _countCategory.value = _countCategory.value?.minus(1)
+    }
+    val countCategory: LiveData<Int>
+        get() = _countCategory
+
 }
