@@ -15,7 +15,7 @@ abstract class BaseViewBindingActivity<VB : ViewBinding> : AppCompatActivity() {
         setContentView(getInflatedLayout(layoutInflater))
     }
 
-    abstract fun setBinding(layoutInflater: LayoutInflater): VB
+    protected abstract fun setBinding(layoutInflater: LayoutInflater): VB
 
     private fun getInflatedLayout(inflater: LayoutInflater): View {
         binding = setBinding(inflater)

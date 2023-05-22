@@ -27,7 +27,7 @@ abstract class BaseDataBindingFragment<DB : ViewDataBinding>(@LayoutRes private 
         return binding.root
     }
 
-    abstract fun bindViewModelWithBinding()
+    protected abstract fun bindViewModelWithBinding()
 
     override fun onDestroyView() {
         _binding = null
