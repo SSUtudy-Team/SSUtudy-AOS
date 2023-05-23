@@ -2,29 +2,31 @@ package com.android.ssutudy.presentation.main.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.android.ssutudy.R
 import com.android.ssutudy.databinding.ActivityMainBinding
+import com.android.ssutudy.presentation.base.BaseViewBindingActivity
 import com.android.ssutudy.presentation.create.view.CreateActivity
 import com.android.ssutudy.presentation.home.view.HomeFragment
 import com.android.ssutudy.presentation.mypage.view.MyPageFragment
 import com.android.ssutudy.util.publics.PublicFunction.makeLog
 import com.android.ssutudy.util.publics.PublicString.INVALID_ITEM_ACCESSED
 
-class MainActivity : AppCompatActivity() {
-    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     private val homeFragment by lazy { HomeFragment() }
     private val myPageFragment by lazy { MyPageFragment() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
         addFirstFragment(savedInstanceState)
         initBnvItemSelectEvent()
     }
+
+    override fun setBinding(layoutInflater: LayoutInflater): ActivityMainBinding =
+        ActivityMainBinding.inflate(layoutInflater)
 
     private fun initBnvItemSelectEvent() {
         with(binding.bnvMain) {
