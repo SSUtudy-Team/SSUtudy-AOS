@@ -15,6 +15,7 @@
         <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
         <item name="dropDownListViewStyle">@style/SpinnerTheme</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="SpinnerDivideStyle" parent="android:style/Widget.ListView.DropDown">
