@@ -17,14 +17,17 @@ abstract class BaseViewBindingFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = setBinding(inflater)
+        _binding = setBinding(inflater, container)
         return binding.root
     }
 
-    abstract fun setBinding(layoutInflater: LayoutInflater): VB
+    protected abstract fun setBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+    ): VB
 
     override fun onDestroyView() {
-        super.onDestroyView()
         _binding = null
+        super.onDestroyView()
     }
 }
