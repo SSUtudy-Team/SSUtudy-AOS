@@ -10,8 +10,10 @@
     <!--gray-->
     <color name="gray_9e9e9e">#9E9E9E</color>
     <color name="gray_d5d5d5">#D5D5D5</color>
+    <color name="gray_dcdee3">#00DCDEE3</color>
     <!--sky-->
     <color name="sky_9cd6d3">#9CD6D3</color>
     <!--blue-->
     <color name="blue_0066ff">#0066FF</color>
+    <color name="red_df0000">#DF0000</color>
 </resources>
