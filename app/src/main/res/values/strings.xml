@@ -33,6 +33,7 @@
     <string name="open_source">오픈소스 고지</string>
     <string name="version">버전 정보</string>
     <string name="logout">로그아웃</string>
+    <string name="recommendation_ssutudy">추천 SSUtudy</string>
 
     <string-array name="spinner_grade">
         <item>1학년</item>
@@ -45,5 +46,27 @@
         <item>미디어경영</item>
         <item>컴퓨터학부</item>
         <item>글로벌미디어학부</item>
+    </string-array>
+    <string-array name="spinner_ssutudy_recommendation">
+        <item>추천순</item>
+        <item>최신순</item>
+    </string-array>
+    <string-array name="ssutudy_category">
+        <item>알고리즘</item>
+        <item>운영체제</item>
+        <item>자료구조</item>
+        <item>데이터베이스</item>
+        <item>시스템</item>
+        <item>보안</item>
+        <item>UI/UX</item>
+        <item>게임</item>
+        <item>인공지능</item>
+        <item>머신러닝</item>
+        <item>OOP</item>
+        <item>네트워크</item>
+        <item>컴퓨터구조</item>
+        <item>소프트웨어</item>
+        <item>프로그레밍</item>
+        <item>기타</item>
     </string-array>
 </resources>
