@@ -34,6 +34,7 @@
     <string name="version">버전 정보</string>
     <string name="logout">로그아웃</string>
     <string name="recommendation_ssutudy">추천 SSUtudy</string>
+    <string name="create_ssutudy">스터디\n개설하기</string>
 
     <string-array name="spinner_grade">
         <item>1학년</item>
