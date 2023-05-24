@@ -52,7 +52,7 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     }
 
     private fun addFirstFragment(savedInstanceState: Bundle?) {
-        if (savedInstanceState != null)
+        if (savedInstanceState == null)
             supportFragmentManager.commit {
                 replace(R.id.fcv_main, homeFragment)
             }
