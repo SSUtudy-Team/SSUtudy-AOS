@@ -65,7 +65,7 @@ class SignUpSecondFragment : Fragment() {
 
     private fun initFlexboxLayout() {
         binding.layoutSignUpSecondCategory.submitList(
-            listOf("컴퓨터구조", "알고리즘", "소프트웨어프로젝트", "운영체제", "데이터통신과네트워크"),
+            resources.getStringArray(R.array.ssutudy_category),
             plusCategoryCount = activityViewModel.plusCountCategoryOne,
             minusCategoryCount = activityViewModel.minusCountCategoryOne
         )

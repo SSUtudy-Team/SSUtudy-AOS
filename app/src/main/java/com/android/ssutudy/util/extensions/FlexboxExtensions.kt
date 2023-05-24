@@ -7,7 +7,7 @@ import com.android.ssutudy.R
 import com.google.android.flexbox.FlexboxLayout
 
 fun FlexboxLayout.submitList(
-    itemList: List<String>, plusCategoryCount: () -> Unit,
+    itemList: Array<String>, plusCategoryCount: () -> Unit,
     minusCategoryCount: () -> Unit,
 ) {
     itemList.forEach { text ->
