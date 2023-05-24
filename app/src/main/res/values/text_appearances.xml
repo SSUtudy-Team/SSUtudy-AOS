@@ -41,4 +41,9 @@
         <item name="fontFamily">@font/sd_gothic_neo_medium_500</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="R12">
+        <item name="fontFamily">@font/sd_gothic_neo_regular_400</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>
