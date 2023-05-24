@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.android.ssutudy.presentation.home.viewmodel.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/app_name"
+            android:textAppearance="@style/B18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/ic_alarm"
+            app:layout_constraintBottom_toBottomOf="@id/tv_home_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_home_title" />
+
+        <View
+            android:id="@+id/view_home_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="13dp"
+            android:background="@color/gray_dcdee3"
+            app:layout_constraintTop_toBottomOf="@id/tv_home_title" />
+
+        <TextView
+            android:id="@+id/tv_home_my_ssutudy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="나의 SSUtudy"
+            android:textAppearance="@style/B18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_home_divider" />
+
+        <LinearLayout
+            android:id="@+id/layout_home_my_ssutudy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_home_my_ssutudy">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
+                android:orientation="vertical"
+                android:visibility="@{vm.doesMySSUtudyExist ? View.GONE : View.VISIBLE}">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="27dp"
+                    android:text="참여 중인 SSUtudy가 없어요"
+                    android:textAppearance="@style/R12"
+                    android:textColor="@color/gray_464646" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_solid_sky_9cd6d3_radius_10"
+                    android:text="스터디 개설하기"
+                    android:textAppearance="@style/M16" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_my_ssutudy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="@{vm.doesMySSUtudyExist ? View.VISIBLE : View.GONE}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_home_recommendation_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="41dp"
+            android:text="@string/recommendation_ssutudy"
+            android:textAppearance="@style/B18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_home_my_ssutudy" />
+
+        <TextView
+            android:id="@+id/tv_home_recommendation_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="설정한 관심 학과에서 개설된 SSUtudy를 추천해드려요."
+            android:textAppearance="@style/R12"
+            android:textColor="@color/gray_464646"
+            app:layout_constraintEnd_toStartOf="@id/spinner_home_recommendation"
+            app:layout_constraintStart_toStartOf="@id/tv_home_recommendation_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_home_recommendation_title" />
+
+        <Spinner
+            android:id="@+id/spinner_home_recommendation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_home_recommendation_desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_home_recommendation_desc" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_home_recommendation_desc" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
