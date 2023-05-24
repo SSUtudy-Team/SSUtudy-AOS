@@ -21,7 +21,7 @@
         android:fontStyle="normal"
         android:fontWeight="500" />
     <font
-        android:font="@font/sd_gothic_neo_normal_400"
+        android:font="@font/sd_gothic_neo_regular_400"
         android:fontStyle="normal"
         android:fontWeight="400" />
     <font
