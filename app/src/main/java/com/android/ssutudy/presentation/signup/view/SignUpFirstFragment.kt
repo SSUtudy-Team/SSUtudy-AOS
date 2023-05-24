@@ -2,24 +2,19 @@ package com.android.ssutudy.presentation.signup.view
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
 import com.android.ssutudy.R
 import com.android.ssutudy.databinding.FragmentSignUpFirstBinding
 import com.android.ssutudy.listeners.signup.OnSignUpNextButtonClickListener
+import com.android.ssutudy.presentation.base.BaseDataBindingFragment
 import com.android.ssutudy.presentation.signup.viewmodel.SignUpViewModel
 import com.android.ssutudy.util.extensions.makeToastMessage
 
-class SignUpFirstFragment : Fragment() {
-    private var _binding: FragmentSignUpFirstBinding? = null
-    private val binding: FragmentSignUpFirstBinding
-        get() = requireNotNull(_binding)
+class SignUpFirstFragment :
+    BaseDataBindingFragment<FragmentSignUpFirstBinding>(R.layout.fragment_sign_up_first) {
     private var onSignUpNextButtonClickListener: OnSignUpNextButtonClickListener? = null
     private val activityViewModel by activityViewModels<SignUpViewModel>()
 
@@ -29,21 +24,8 @@ class SignUpFirstFragment : Fragment() {
         onSignUpNextButtonClickListener = context as? OnSignUpNextButtonClickListener
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
-        return initDataBinding(inflater, container)
-    }
-
-    private fun initDataBinding(inflater: LayoutInflater, container: ViewGroup?): View {
-        _binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_sign_up_first, container, false
-        )
+    override fun bindViewModelWithBinding() {
         binding.vm = activityViewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -88,15 +70,10 @@ class SignUpFirstFragment : Fragment() {
         binding.btnSignUpFirst.setOnClickListener {
             if (isAbleToMoveNextSignUpFragment()) onSignUpNextButtonClickListener?.setNextFragment()
                 ?: makeToastMessage("onSignUpNextButtonClickListener is null")
-            else makeToastMessage("Not Yet ...")
+            else makeToastMessage("조건을 충족해주세요")
         }
     }
 
     private fun isAbleToMoveNextSignUpFragment(): Boolean =
         activityViewModel.isAbleToNavigateNextPage()
-
-    override fun onDestroyView() {
-        _binding = null
-        super.onDestroyView()
-    }
 }
