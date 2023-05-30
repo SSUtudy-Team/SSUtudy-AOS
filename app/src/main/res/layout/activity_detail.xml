@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.ssutudy.presentation.detail.viewmodel.DetailViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_create_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:padding="12dp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="@id/tv_detail_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_detail_title" />
+
+            <TextView
+                android:id="@+id/tv_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="@string/detail_ssutudy_title"
+                android:textAppearance="@style/B18"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view_detail_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="13dp"
+                android:background="@color/gray_dcdee3"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_title" />
+
+            <TextView
+                android:id="@+id/tv_detail_study_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:textAppearance="@style/B16"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_detail_divider"
+                tools:background="@drawable/bg_solid_sky_5ec2c4_radius_4"
+                tools:text="모집중" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_solid_gray_d9d9d9_radius_4"
+                android:gravity="center"
+                android:paddingHorizontal="12dp"
+                android:textAppearance="@style/R16"
+                app:layout_constraintBottom_toBottomOf="@id/tv_detail_study_state"
+                app:layout_constraintStart_toEndOf="@id/tv_detail_study_state"
+                app:layout_constraintTop_toTopOf="@id/tv_detail_study_state"
+                tools:text="IT대학 소프트웨어학부" />
+
+            <TextView
+                android:id="@+id/tv_detail_study_subject_professor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/R14"
+                app:layout_constraintStart_toStartOf="@id/tv_detail_study_state"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_study_state"
+                tools:text="소프트웨어 프로젝트 | 김영종교수님" />
+
+            <TextView
+                android:id="@+id/tv_detail_study_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="@style/B18"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_study_subject_professor"
+                tools:text="알고리즘 같이 공부하실 분을 구합니다!~~코딩테스트 같이 준비해요!!!!" />
+
+            <TextView
+                android:id="@+id/tv_detail_study_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:textAppearance="@style/R16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_study_title"
+                tools:text="저희는 정보과학관에서\n매주 화요일 저녁 6시에 모일거에요\n\n벌금은 지각 혹은 미참여시 1000원씩\n누적입니다!\n\n아침 스터디인 만큼 다들 적극적으로 참여 해주셨으면 좋겠습니다!!" />
+
+            <TextView
+                android:id="@+id/tv_detail_study_category_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="카테고리"
+                android:textAppearance="@style/R14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_study_desc" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/layout_detail_study_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                app:flexWrap="wrap"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_study_category_title" />
+
+            <TextView
+                android:id="@+id/tv_detail_study_participants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="참여인원"
+                android:textAppearance="@style/R14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_detail_study_category" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_detail_study_participants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_study_participants">
+
+                <TextView
+                    android:id="@+id/tv_detail_study_participants_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
+                    android:layout_marginStart="16dp"
+                    android:textAppearance="@style/R16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="최아무개 외 2명" />
+
+                <ImageView
+                    android:id="@+id/iv_detail_study_participants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_participants"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_detail_study_participants_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_detail_study_participants_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:textAppearance="@style/R16"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_detail_study_participants_name"
+                    app:layout_constraintEnd_toStartOf="@id/iv_detail_study_participants"
+                    app:layout_constraintTop_toTopOf="@id/tv_detail_study_participants_name"
+                    tools:text="4/6" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="20dp"
+                android:visibility="@{vm.isUserInStudy ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_detail_study_participants">
+
+                <TextView
+                    android:id="@+id/tv_detail_study_link_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="참여링크"
+                    android:textAppearance="@style/R14"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_detail_study_link"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:autoLink="web"
+                    android:ellipsize="end"
+                    android:linksClickable="true"
+                    android:maxLines="1"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp"
+                    android:textAppearance="@style/R16"
+                    app:layout_constraintTop_toBottomOf="@id/tv_detail_study_link_title" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_detail_join"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="34dp"
+                android:layout_marginBottom="22dp"
+                android:background="@drawable/bg_solid_sky_9cd6d3_radius_10"
+                android:text="참여하기"
+                android:visibility="@{vm.isUserInStudy ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_detail_study_participants" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
