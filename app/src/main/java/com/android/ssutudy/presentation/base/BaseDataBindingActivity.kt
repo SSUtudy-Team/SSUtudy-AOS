@@ -17,8 +17,11 @@ abstract class BaseDataBindingActivity<DB : ViewDataBinding>(@LayoutRes private 
         setContentView(getInflatedLayout())
     }
 
+    protected abstract fun bindViewModelWithBinding()
+
     private fun getInflatedLayout(): View {
         binding = DataBindingUtil.setContentView(this, layoutResId)
+        binding.lifecycleOwner = this
         return binding.root
     }
 }
