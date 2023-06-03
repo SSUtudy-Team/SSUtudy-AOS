@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LiveData
 import com.android.ssutudy.R
 import com.android.ssutudy.databinding.FragmentSignUpFirstBinding
 import com.android.ssutudy.listeners.signup.OnSignUpNextButtonClickListener
@@ -32,19 +31,10 @@ class SignUpFirstFragment :
         setNextBtnClickEvent()
     }
 
-    private fun observe(liveData: LiveData<Boolean>, action: (Boolean) -> Unit) {
-        liveData.observe(viewLifecycleOwner) {
-            liveData.value?.let { value -> action.invoke(value) }
-        }
-    }
-
     private fun setNextBtnClickEvent() {
         binding.btnSignUpFirst.setOnClickListener {
             onSignUpNextButtonClickListener?.setNextFragment()
                 ?: NullPointerException("onSignUpNextButtonClickListener is null")
         }
     }
-
-    private fun isAbleToMoveNextSignUpFragment(): Boolean =
-        activityViewModel.isAbleToNavigateNextPage()
 }
