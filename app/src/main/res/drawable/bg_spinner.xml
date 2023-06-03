@@ -9,12 +9,12 @@
         </shape>
     </item>
     <item
-        android:width="16dp"
-        android:height="14dp"
-        android:bottom="16dp"
+        android:width="12dp"
+        android:height="7dp"
+        android:bottom="20dp"
         android:drawable="@drawable/ic_arrow_bottom"
         android:right="15dp"
-        android:gravity="right|top"
+        android:gravity="right"
         android:left="26dp"
-        android:top="18dp" />
+        android:top="20dp" />
 </layer-list>
