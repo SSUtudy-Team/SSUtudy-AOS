@@ -148,7 +148,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/bg_enable_selector_gray_sky_radius_10"
-                android:enabled="@{vm.validFirstSignUpInfo}"
+                android:enabled="@{vm.isNextBtnEnabled()}"
                 android:text="@string/next" />
         </LinearLayout>
     </ScrollView>
