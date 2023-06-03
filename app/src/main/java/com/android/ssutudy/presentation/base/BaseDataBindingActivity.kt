@@ -15,6 +15,7 @@ abstract class BaseDataBindingActivity<DB : ViewDataBinding>(@LayoutRes private 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getInflatedLayout())
+        bindViewModelWithBinding()
     }
 
     protected abstract fun bindViewModelWithBinding()
