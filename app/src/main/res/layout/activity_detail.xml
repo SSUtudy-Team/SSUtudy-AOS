@@ -151,6 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
                 app:layout_constraintTop_toBottomOf="@id/tv_detail_study_participants">
 
