@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.android.ssutudy.presentation.create.viewmodel.CreateViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_create_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_close"
+            app:layout_constraintBottom_toBottomOf="@id/tv_create_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_create_title" />
+
+        <TextView
+            android:id="@+id/tv_create_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/create_ssutudy_title"
+            android:textAppearance="@style/B18"
+            app:layout_constraintEnd_toStartOf="@id/tv_create_complete"
+            app:layout_constraintStart_toEndOf="@id/iv_create_close"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_create_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:enabled="@{vm.canUserCreate}"
+            android:padding="10dp"
+            android:text="완료"
+            android:textAppearance="@style/R14"
+            android:textColor="@color/tv_selector_gray_black"
+            app:layout_constraintBottom_toBottomOf="@id/tv_create_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_create_title" />
+
+        <View
+            android:id="@+id/view_create_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/gray_dcdee3"
+            app:layout_constraintTop_toBottomOf="@id/tv_create_complete" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_create_divider">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_create_subject_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:text="@string/subject"
+                    android:textAppearance="@style/R12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/spinner_create_college"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_spinner_create"
+                    app:layout_constraintEnd_toStartOf="@id/spinner_create_major"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_subject_title" />
+
+                <Spinner
+                    android:id="@+id/spinner_create_major"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_spinner_create"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/spinner_create_college"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_subject_title" />
+
+                <Spinner
+                    android:id="@+id/spinner_create_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_spinner_create"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_create_college" />
+
+                <TextView
+                    android:id="@+id/tv_create_topic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/topic"
+                    android:textAppearance="@style/R12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_create_subject" />
+
+                <EditText
+                    android:id="@+id/et_create_topic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
+                    android:hint="스터디의 주제를 입력해주세요."
+                    android:paddingVertical="12dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="8dp"
+                    android:textAppearance="@style/R16"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_topic" />
+
+                <TextView
+                    android:id="@+id/tv_create_intro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/intro_curri_culum"
+                    android:textAppearance="@style/R12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_create_topic" />
+
+                <EditText
+                    android:id="@+id/et_create_intro"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
+                    android:gravity="top"
+                    android:hint="스터디의 주제를 입력해주세요."
+                    android:paddingVertical="12dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="8dp"
+                    android:textAppearance="@style/R16"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_intro" />
+
+                <TextView
+                    android:id="@+id/tv_create_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/choose_category"
+                    android:textAppearance="@style/R12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_create_intro" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_create_category_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_8"
+                    android:text="@string/input"
+                    android:textAppearance="@style/M16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_category" />
+
+                <TextView
+                    android:id="@+id/tv_create_max_participants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/max_participants"
+                    android:textAppearance="@style/R12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btn_create_category_input" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/bg_spinner_create"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_max_participants" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
