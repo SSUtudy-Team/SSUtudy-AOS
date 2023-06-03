@@ -187,11 +187,17 @@
                     app:layout_constraintTop_toBottomOf="@id/btn_create_category_input" />
 
                 <Spinner
-                    android:layout_width="match_parent"
+                    android:id="@+id/spinner_create_participants"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
-                    android:background="@drawable/bg_spinner_create"
-                    app:layout_constraintTop_toBottomOf="@id/tv_create_max_participants" />
+                    android:background="@drawable/bg_spinner_create_participants"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="0dp"
+                    android:gravity="center"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_create_max_participants"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_create_max_participants" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

@@ -38,6 +38,11 @@
     <string name="create_ssutudy_title">스터디 개설하기</string>
     <string name="detail_ssutudy_title">스터디 상세보기</string>
     <string name="subject">과목</string>
+    <string name="topic">주제</string>
+    <string name="intro_curri_culum">소개 (커리큘럼 등)</string>
+    <string name="choose_category">카테고리 선택 (최대 5개)</string>
+    <string name="max_participants">최대 참여 인원</string>
+    <string name="input">입력하기</string>
 
     <string-array name="spinner_grade">
         <item>1학년</item>
@@ -54,6 +59,27 @@
     <string-array name="spinner_ssutudy_recommendation">
         <item>추천순</item>
         <item>최신순</item>
+    </string-array>
+    <string-array name="spinner_create_college">
+        <item>IT대학</item>
+    </string-array>
+    <string-array name="spinner_create_major">
+        <item>컴퓨터학부</item>
+        <item>소프트웨어학부</item>
+        <item>AI융합학부</item>
+        <item>글로벌미디어학부</item>
+        <item>미디어경영</item>
+    </string-array>
+    <string-array name="spinner_create_subject">
+        <item>소프트웨어 프로젝트 (나)</item>
+    </string-array>
+    <string-array name="spinner_create_participants">
+        <item>3 명</item>
+        <item>4 명</item>
+        <item>5 명</item>
+        <item>6 명</item>
+        <item>7 명</item>
+        <item>8 명</item>
     </string-array>
     <string-array name="ssutudy_category">
         <item>알고리즘</item>
