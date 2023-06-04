@@ -3,14 +3,18 @@ package com.android.ssutudy.util.extensions
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.LayoutRes
+import androidx.core.view.children
 import com.android.ssutudy.R
 import com.google.android.flexbox.FlexboxLayout
 
 fun FlexboxLayout.submitList(
     clickable: Boolean,
-    itemList: Array<String>, plusCategoryCount: (() -> Unit)? = null,
+    itemList: List<String>, plusCategoryCount: (() -> Unit)? = null,
     minusCategoryCount: (() -> Unit)? = null,
+    @LayoutRes backgroundResource: Int = R.layout.view_category,
 ) {
+    removeAllViews()
     itemList.forEach { text ->
         if (clickable) {
             addClickableTextview(
@@ -18,7 +22,7 @@ fun FlexboxLayout.submitList(
                 minusCategoryCount = minusCategoryCount
             )
         } else {
-            addTextview(textResource = text)
+            addTextview(textResource = text, backgroundResource = backgroundResource)
         }
     }
 }
@@ -55,10 +59,11 @@ fun FlexboxLayout.addClickableTextview(
 
 fun FlexboxLayout.addTextview(
     textResource: String,
+    @LayoutRes backgroundResource: Int,
 ) {
     val textView =
         (LayoutInflater.from(context)
-            .inflate(R.layout.view_category, null) as TextView).apply {
+            .inflate(backgroundResource, null) as TextView).apply {
             text = textResource
         }
 
@@ -70,4 +75,14 @@ fun FlexboxLayout.addTextview(
     }
 
     addView(textView, layoutParams)
+}
+
+fun FlexboxLayout.getSelectedItems(): List<String> {
+    val selectedViews: List<TextView> = children.filter {
+        it.isSelected && it is TextView
+    }.toList() as List<TextView>
+    val selectedTexts: List<String> = selectedViews.map {
+        it.text.toString()
+    }
+    return selectedTexts
 }
