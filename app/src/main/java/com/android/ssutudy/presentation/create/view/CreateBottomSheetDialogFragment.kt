@@ -1,7 +1,6 @@
 package com.android.ssutudy.presentation.create.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import com.android.ssutudy.util.extensions.makeToastMessage
 import com.android.ssutudy.util.extensions.submitList
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CreateBottomSheetDialog : BottomSheetDialogFragment() {
+class CreateBottomSheetDialogFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentCreateBottomSheetBinding? = null
     private val binding: FragmentCreateBottomSheetBinding
         get() = requireNotNull(_binding)

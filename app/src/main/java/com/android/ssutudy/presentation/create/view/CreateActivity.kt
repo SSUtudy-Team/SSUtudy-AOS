@@ -49,7 +49,7 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
     }
 
     private fun showBottomSheetDialog() {
-        val bottomSheetDialog = CreateBottomSheetDialog()
+        val bottomSheetDialog = CreateBottomSheetDialogFragment()
         bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
     }
 
