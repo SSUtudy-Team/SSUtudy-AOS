@@ -43,6 +43,7 @@
     <string name="choose_category">카테고리 선택 (최대 5개)</string>
     <string name="max_participants">최대 참여 인원</string>
     <string name="input">입력하기</string>
+    <string name="input_topic">스터디의 주제를 입력해주세요.</string>
 
     <string-array name="spinner_grade">
         <item>1학년</item>
