@@ -16,6 +16,7 @@
         <!-- Customize your theme here. -->
         <item name="dropDownListViewStyle">@style/SpinnerTheme</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="SpinnerDivideStyle" parent="android:style/Widget.ListView.DropDown">
@@ -26,5 +27,14 @@
     <style name="SpinnerTheme" parent="Theme.SSUtudy">
         <item name="android:dropDownListViewStyle">@style/SpinnerDivideStyle</item>
         <item name="android:listSelector">@drawable/bg_spinner_ripple</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_top_radius_27</item>
     </style>
 </resources>
