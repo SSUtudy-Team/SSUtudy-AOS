@@ -7,6 +7,8 @@
         <variable
             name="vm"
             type="com.android.ssutudy.presentation.create.viewmodel.CreateViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -128,6 +130,7 @@
                     android:paddingVertical="12dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="8dp"
+                    android:text="@={vm.topic}"
                     android:textAppearance="@style/R16"
                     app:layout_constraintTop_toBottomOf="@id/tv_create_topic" />
 
@@ -148,10 +151,11 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
                     android:gravity="top"
-                    android:hint="스터디의 주제를 입력해주세요."
+                    android:hint="@string/input_topic"
                     android:paddingVertical="12dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="8dp"
+                    android:text="@={vm.intro}"
                     android:textAppearance="@style/R16"
                     app:layout_constraintTop_toBottomOf="@id/tv_create_intro" />
 
@@ -165,16 +169,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/et_create_intro" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_create_category_input"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/layout_create_category"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_8"
-                    android:text="@string/input"
-                    android:textAppearance="@style/M16"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_create_category" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_category">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_create_category_input"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_8"
+                        android:text="@string/input"
+                        android:textAppearance="@style/M16"
+                        android:visibility="@{vm.countCategory == 0 ? View.VISIBLE : View.GONE }" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/layout_create_category_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{vm.countCategory == 0 ? View.GONE : View.VISIBLE }"
+                        app:flexWrap="wrap" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv_create_max_participants"
@@ -184,7 +201,7 @@
                     android:text="@string/max_participants"
                     android:textAppearance="@style/R12"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btn_create_category_input" />
+                    app:layout_constraintTop_toBottomOf="@id/layout_create_category" />
 
                 <Spinner
                     android:id="@+id/spinner_create_participants"
@@ -192,9 +209,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
                     android:background="@drawable/bg_spinner_create_participants"
-                    android:paddingEnd="10dp"
-                    android:paddingStart="0dp"
                     android:gravity="center"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="10dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_create_max_participants"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_create_max_participants" />
