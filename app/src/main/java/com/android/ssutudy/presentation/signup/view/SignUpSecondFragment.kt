@@ -66,7 +66,7 @@ class SignUpSecondFragment : Fragment() {
     private fun initFlexboxLayout() {
         binding.layoutSignUpSecondCategory.submitList(
             clickable = true,
-            itemList = resources.getStringArray(R.array.ssutudy_category),
+            itemList = resources.getStringArray(R.array.ssutudy_category).toList(),
             plusCategoryCount = activityViewModel.plusCountCategoryOne,
             minusCategoryCount = activityViewModel.minusCountCategoryOne
         )
