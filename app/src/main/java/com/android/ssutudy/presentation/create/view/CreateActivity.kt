@@ -7,6 +7,7 @@ import com.android.ssutudy.R
 import com.android.ssutudy.databinding.ActivityCreateBinding
 import com.android.ssutudy.presentation.base.BaseDataBindingActivity
 import com.android.ssutudy.presentation.create.viewmodel.CreateViewModel
+import com.android.ssutudy.util.extensions.submitList
 
 class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.activity_create) {
     private val viewModel by viewModels<CreateViewModel>()
@@ -16,11 +17,40 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
 
         initViews()
         setClickEvents()
+        setObservers()
+    }
+
+    private fun setObservers() {
+        observeCategoryList()
+    }
+
+    private fun observeCategoryList() {
+        viewModel.categoryList.observe(this) { categoryList ->
+            binding.layoutCreateCategoryList.submitList(
+                false,
+                categoryList,
+                backgroundResource = R.layout.view_category_of_interest
+            )
+        }
     }
 
     private fun setClickEvents() {
         setCloseBtnClickEvent()
+        setCategoryClickEvent()
+    }
 
+    private fun setCategoryClickEvent() {
+        binding.btnCreateCategoryInput.setOnClickListener {
+            showBottomSheetDialog()
+        }
+        binding.layoutCreateCategoryList.setOnClickListener {
+            showBottomSheetDialog()
+        }
+    }
+
+    private fun showBottomSheetDialog() {
+        val bottomSheetDialog = CreateBottomSheetDialog()
+        bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
     }
 
     private fun setCloseBtnClickEvent() {
