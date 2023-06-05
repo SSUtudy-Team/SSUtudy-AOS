@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="18dp">
+
+    <TextView
+        android:id="@+id/tv_detail_bottom_sheet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/detail_ssutudy_title"
+        android:textAppearance="@style/B18" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tv_detail_bottom_sheet_end_recruitment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        android:gravity="start|center_vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:text="스터디 모집 종료"
+        android:textAppearance="@style/M16"
+        android:textColor="@color/black" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tv_detail_bottom_sheet_end_study"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="start|center_vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:text="스터디 종료"
+        android:textAppearance="@style/M16"
+        android:textColor="@color/red_df0000" />
+
+</LinearLayout>
