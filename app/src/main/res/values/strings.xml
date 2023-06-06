@@ -75,21 +75,25 @@
         <item>8 명</item>
     </string-array>
     <string-array name="ssutudy_category">
-        <item>알고리즘</item>
-        <item>운영체제</item>
-        <item>자료구조</item>
-        <item>데이터베이스</item>
-        <item>시스템</item>
-        <item>보안</item>
-        <item>UI/UX</item>
-        <item>게임</item>
-        <item>인공지능</item>
-        <item>머신러닝</item>
-        <item>OOP</item>
+        <item>JAVA</item>
+        <item>Python</item>
         <item>네트워크</item>
+        <item>알고리즘</item>
         <item>컴퓨터구조</item>
-        <item>소프트웨어</item>
-        <item>프로그래밍</item>
+        <item>인공지능</item>
+        <item>데이터베이스</item>
+        <item>머신러닝</item>
+        <item>CS</item>
+        <item>백엔드</item>
+        <item>프론트엔드</item>
+        <item>UIUX</item>
+        <item>클라이언트</item>
+        <item>게임</item>
+        <item>디자인패턴</item>
+        <item>클린코드</item>
+        <item>사이드프로젝트</item>
+        <item>공모전</item>
+        <item>해커톤</item>
         <item>기타</item>
     </string-array>
 
