@@ -22,11 +22,9 @@ class LoginViewModel : ViewModel() {
     val loginErrorResponse: LiveData<String> = _loginErrorResponse
 
     fun login() {
-        if (studentId.value == null || pw.value == null)
-            throw NullPointerException("id or pw is null")
         viewModelScope.launch {
             kotlin.runCatching {
-                loginService.login(RequestLoginDto(studentId.value!!, pw.value!!))
+                loginService.login(RequestLoginDto(studentId.value ?: "", pw.value ?: ""))
             }.fold(onSuccess = { response -> _loginSuccessResponse.value = response },
                 onFailure = { response -> _loginErrorResponse.value = getErrorMessage(response) })
         }
