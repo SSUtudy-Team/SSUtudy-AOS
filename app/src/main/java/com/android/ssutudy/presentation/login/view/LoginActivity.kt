@@ -2,27 +2,56 @@ package com.android.ssutudy.presentation.login.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
+import com.android.ssutudy.R
+import com.android.ssutudy.data.local.SharedPreferences
 import com.android.ssutudy.databinding.ActivityLoginBinding
+import com.android.ssutudy.presentation.base.BaseDataBindingActivity
+import com.android.ssutudy.presentation.login.viewmodel.LoginViewModel
 import com.android.ssutudy.presentation.main.view.MainActivity
 import com.android.ssutudy.presentation.signup.view.SignUpActivity
+import com.android.ssutudy.util.extensions.makeToastMessage
+import com.android.ssutudy.util.publics.PublicString.TOKEN
 
-class LoginActivity : AppCompatActivity() {
-    lateinit var binding: ActivityLoginBinding
+class LoginActivity : BaseDataBindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
+    private val viewModel by viewModels<LoginViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setClickEvents()
+        initObservers()
+    }
 
+    private fun initObservers() {
+        initSuccessResponseObserver()
+        initErrorResponseObserver()
+    }
+
+    private fun initErrorResponseObserver() {
+        viewModel.loginErrorResponse.observe(this) {
+            makeToastMessage(it)
+        }
+    }
+
+    private fun initSuccessResponseObserver() {
+        viewModel.loginSuccessResponse.observe(this) {
+            SharedPreferences.setString(TOKEN, it.token)
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+    }
+
+    private fun setClickEvents() {
         setSignUpTextViewClickEvent()
         setLoginBtnClickEvent()
     }
 
+    override fun bindViewModelWithBinding() {
+        binding.vm = viewModel
+    }
+
     private fun setLoginBtnClickEvent() {
         binding.btnLogin.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            if (!isFinishing) finish()
+            viewModel.login()
         }
     }
 

@@ -1,111 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".presentation.login.view.LoginActivity">
 
-    <TextView
-        android:id="@+id/tv_login_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="79dp"
-        android:text="@string/smart_study_for_u"
-        android:textAppearance="@style/M18" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tv_login_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ssutudy_with"
-        android:textAppearance="@style/B40" />
+    <data>
 
-    <TextView
-        android:id="@+id/tv_login_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/login_desc"
-        android:textAppearance="@style/M14"
-        android:textColor="@color/gray_9e9e9e" />
-
-    <TextView
-        android:id="@+id/tv_login_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="83dp"
-        android:text="@string/id"
-        android:textAppearance="@style/M16" />
-
-    <EditText
-        android:id="@+id/et_login_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
-        android:hint="@string/input_student_id"
-        android:inputType="text"
-        android:maxLines="1"
-        android:paddingVertical="17dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="0dp"
-        android:textAppearance="@style/M14"
-        android:textColorHint="@color/gray_9e9e9e" />
-
-    <TextView
-        android:id="@+id/tv_login_pw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/pw"
-        android:textAppearance="@style/M16" />
-
-    <EditText
-        android:id="@+id/et_login_pw"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
-        android:hint="@string/input_pw"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:paddingVertical="17dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="0dp"
-        android:textAppearance="@style/M14"
-        android:textColorHint="@color/gray_9e9e9e" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/bg_solid_sky_9cd6d3_radius_10"
-        android:text="@string/login"
-        android:textAppearance="@style/M16" />
+        <variable
+            name="vm"
+            type="com.android.ssutudy.presentation.login.viewmodel.LoginViewModel" />
+    </data>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".presentation.login.view.LoginActivity">
 
         <TextView
+            android:id="@+id/tv_login_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/not_yet_sign_up"
-            android:textAppearance="@style/M14" />
+            android:layout_marginTop="79dp"
+            android:text="@string/smart_study_for_u"
+            android:textAppearance="@style/M18" />
 
         <TextView
-            android:id="@+id/tv_login_sign_up"
+            android:id="@+id/tv_login_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="@string/sign_up"
-            android:textAppearance="@style/B14"
-            android:textColor="@color/blue_0066ff" />
+            android:text="@string/ssutudy_with"
+            android:textAppearance="@style/B40" />
+
+        <TextView
+            android:id="@+id/tv_login_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/login_desc"
+            android:textAppearance="@style/M14"
+            android:textColor="@color/gray_9e9e9e" />
+
+        <TextView
+            android:id="@+id/tv_login_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="83dp"
+            android:text="@string/student_id"
+            android:textAppearance="@style/M16" />
+
+        <EditText
+            android:id="@+id/et_login_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
+            android:hint="@string/input_student_id"
+            android:inputType="number"
+            android:maxLines="1"
+            android:paddingVertical="17dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:text="@={vm.studentId}"
+            android:textAppearance="@style/M14"
+            android:textColorHint="@color/gray_9e9e9e" />
+
+        <TextView
+            android:id="@+id/tv_login_pw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="@string/pw"
+            android:textAppearance="@style/M16" />
+
+        <EditText
+            android:id="@+id/et_login_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
+            android:hint="@string/input_pw"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingVertical="17dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="0dp"
+            android:text="@={vm.pw}"
+            android:textAppearance="@style/M14"
+            android:textColorHint="@color/gray_9e9e9e" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_solid_sky_9cd6d3_radius_10"
+            android:text="@string/login"
+            android:textAppearance="@style/M16" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/not_yet_sign_up"
+                android:textAppearance="@style/M14" />
+
+            <TextView
+                android:id="@+id/tv_login_sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/sign_up"
+                android:textAppearance="@style/B14"
+                android:textColor="@color/blue_0066ff" />
+        </LinearLayout>
+
     </LinearLayout>
-
-</LinearLayout>
+</layout>
