@@ -1,11 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0'
 }
 
 android {
     namespace 'com.android.ssutudy'
     compileSdk 33
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
     defaultConfig {
         applicationId "com.android.ssutudy"
@@ -15,6 +19,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", properties["base.url"]
     }
 
     buildTypes {
