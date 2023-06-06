@@ -108,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_spinner_create"
+                    android:spinnerMode="dialog"
                     app:layout_constraintTop_toBottomOf="@id/spinner_create_college" />
 
                 <TextView
