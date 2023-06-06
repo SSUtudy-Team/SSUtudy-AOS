@@ -5,9 +5,9 @@
     <string name="sign_up_desc">회원가입을 통해\n회원님께 맞는 스터디를 추천할 수 있도록\n회원님의 정보를 저희에게 알려주세요</string>
     <string name="ssutudy_with">SSUtudy With</string>
     <string name="id">ID</string>
-    <string name="input_id">아이디를 입력하세요.</string>
+    <string name="input_student_id">8자리 학번을 입력하세요.</string>
     <string name="pw">Password</string>
-    <string name="input_pw">비밀번호를 입력하세요.</string>
+    <string name="input_pw">비밀번호를 입력하세요.(8자리 이상 15자리 이하)</string>
     <string name="login">로그인</string>
     <string name="not_yet_sign_up">아직 회원이 아니신가요?</string>
     <string name="sign_up">가입하기</string>
@@ -44,6 +44,7 @@
     <string name="max_participants">최대 참여 인원</string>
     <string name="input">입력하기</string>
     <string name="input_topic">스터디의 주제를 입력해주세요.</string>
+    <string name="current_max_participants">%s명 / 최대 %s명</string>
 
     <string-array name="spinner_grade">
         <item>1학년</item>
@@ -52,10 +53,11 @@
         <item>4학년</item>
     </string-array>
     <string-array name="spinner_major">
-        <item>소프트웨어학부</item>
-        <item>미디어경영</item>
         <item>컴퓨터학부</item>
+        <item>소프트웨어학부</item>
+        <item>AI융합학부</item>
         <item>글로벌미디어학부</item>
+        <item>미디어경영</item>
     </string-array>
     <string-array name="spinner_ssutudy_recommendation">
         <item>추천순</item>
@@ -63,16 +65,6 @@
     </string-array>
     <string-array name="spinner_create_college">
         <item>IT대학</item>
-    </string-array>
-    <string-array name="spinner_create_major">
-        <item>컴퓨터학부</item>
-        <item>소프트웨어학부</item>
-        <item>AI융합학부</item>
-        <item>글로벌미디어학부</item>
-        <item>미디어경영</item>
-    </string-array>
-    <string-array name="spinner_create_subject">
-        <item>소프트웨어 프로젝트 (나)</item>
     </string-array>
     <string-array name="spinner_create_participants">
         <item>3 명</item>
@@ -97,7 +89,7 @@
         <item>네트워크</item>
         <item>컴퓨터구조</item>
         <item>소프트웨어</item>
-        <item>프로그레밍</item>
+        <item>프로그래밍</item>
         <item>기타</item>
     </string-array>
 
@@ -107,5 +99,90 @@
         <item>자료구조</item>
         <item>데이터베이스</item>
         <item>시스템</item>
+    </string-array>
+
+    <string-array name="subject_list">
+        <item>(전선)두드림Ⅲ-3</item>
+        <item>시스템프로그래밍(나) (대면+사전녹화)</item>
+        <item>인공지능(나) (대면+사전녹화)</item>
+        <item>소프트웨어프로젝트(나) (대면)</item>
+        <item>(전선)두드림Ⅰ-3</item>
+        <item>확률및통계(공통-재수강) (대면)</item>
+        <item>소프트웨어프로젝트(가) (대면)</item>
+        <item>해외장기현장실습(6)</item>
+        <item>네트워크프로그래밍(나) (대면+사전녹화)</item>
+        <item>
+        확률및통계(가) (대면)</item>
+        <item>
+        데이터베이스(다) (대면+사전녹화)</item>
+        <item>
+        물리1및실험(다) (대면)</item>
+        <item>
+        확률및통계(나) (대면)</item>
+        <item>
+        오픈소스기반고급설계 (대면) (Engaged Learning)</item>
+        <item>
+        자료구조(다) (대면)</item>
+        <item>
+        객체지향프로그래밍및실습(나) (대면)</item>
+        <item>
+        전공심화전문가양성교육(3)</item>
+        <item>
+        데이터베이스(가) (대면+사전녹화)</item>
+        <item>
+        소프트웨어공학 (대면)</item>
+        <item>
+        프로그래밍기초및실습(공통-재수강) (대면)</item>
+        <item>
+        물리1및실험(라) (대면)</item>
+        <item>
+        컴퓨터>구조(공통-재수강) (대면)</item>
+        <item>
+        리눅스시스템관리(나) (대면)</item>
+        <item>해외장기현장실습(3)</item>
+        <item>
+        SW융합세미나1 (대면)</item>
+        <item>
+        캡스톤디자인종합프로젝트2(나) (대면)</item>
+        <item>
+        빅데이터분석(나) (대면)</item>
+        <item>
+        객체지향프로그래밍및실습(다) (대면)</item>
+        <item>
+        자료구조(공통-재수강) (대면)</item>
+        <item>
+        선형대수(나) (대면)</item>
+        <item>
+        네트워크프로그래밍(가) (대면+사전녹화)</item>
+        <item>
+        프로그래밍언어(나) (대면)</item>
+        <item>
+        물리1및실험(가) (대면)</item>
+        <item>
+        프로그래밍기초및실습(다) (대면)</item>
+        <item>
+        컴퓨터비전 (대면)</item>
+        <item>
+        자료구조(나) (대면)</item>
+        <item>
+        (전선)두드림Ⅱ-6</item>
+        <item>
+        컴퓨터구조(나) (대면)</item>
+        <item>
+        리눅스시스템관리(공통-재수강) (대면)</item>
+        <item>
+        컴퓨터구조(다) (대면)</item>
+        <item>
+        컴퓨터구조(가) (대면)</item>
+        <item>
+        소프트웨어특강1 (대면)</item>
+        <item>프로그래밍기초및실습(가) (대면)</item>
+        <item>프로그래밍기초및실습(나) (대면)</item>
+        <item>시스템보안(나) (대면)</item>
+        <item>시스템보안(가) (대면)</item>
+        <item>컴파일러 (대면)</item>
+        <item>객체지향프로그래밍및실습(가) (대면)</item>
+        <item>캡스톤디자인종합프로젝트2(가) (대면)</item>
+        <item>데이터베이스(나) (대면+사전녹화)</item>
     </string-array>
 </resources>
