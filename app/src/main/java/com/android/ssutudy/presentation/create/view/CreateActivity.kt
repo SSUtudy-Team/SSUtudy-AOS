@@ -77,7 +77,7 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
     private fun initSubjectSpinner() {
         binding.spinnerCreateSubject.adapter = ArrayAdapter.createFromResource(
             this,
-            R.array.spinner_create_subject,
+            R.array.subject_list,
             R.layout.item_sign_up_second_spinner_major
         )
     }
@@ -85,7 +85,7 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
     private fun initMajorSpinner() {
         binding.spinnerCreateMajor.adapter = ArrayAdapter.createFromResource(
             this,
-            R.array.spinner_create_major,
+            R.array.spinner_major,
             R.layout.item_sign_up_second_spinner_major
         )
     }
@@ -94,7 +94,7 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
         binding.spinnerCreateCollege.adapter = ArrayAdapter.createFromResource(
             applicationContext,
             R.array.spinner_create_college,
-            R.layout.item_sign_up_second_spinner_grade
+            R.layout.item_sign_up_second_spinner_major
         )
     }
 
