@@ -16,4 +16,4 @@ data class RequestLoginDto(
 data class ResponseLoginDto(
     @SerialName("data")
     val token: String,
-)성
+)
