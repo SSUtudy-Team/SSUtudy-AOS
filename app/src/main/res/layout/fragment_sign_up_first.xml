@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
-                android:hint="@string/input_pw"
+                android:hint="@string/input_pw_hint"
                 android:inputType="textPassword"
                 android:maxLength="15"
                 android:maxLines="1"
