@@ -6,20 +6,22 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RequestSignUpDto(
-    @SerialName("student_Id") val studentId: String,
+    @SerialName("studentId") val studentId: String,
     @SerialName("password") val password: String,
     @SerialName("name") val name: String,
     @SerialName("grade") val grade: Int,
     @SerialName("department") val department: String,
-    @SerialName("categories") val categories: List<String>,
-)
+    @SerialName("categoryCodeDtos") val categoryCodeDtos: List<CategoryCodeDto>,
+) {
+    @Serializable
+    data class CategoryCodeDto(
+        @SerialName("categoryCode") val categoryCode: String,
+    )
+}
 
 @Serializable
 data class ResponseSignUpDto(
-    @SerialName("student_Id") val studentId: String,
-    @SerialName("password") val password: String,
-    @SerialName("name") val name: String,
-    @SerialName("grade") val grade: Int,
-    @SerialName("department") val department: String,
-    @SerialName("categories") val categories: List<String>,
+    @SerialName("success") val success: Boolean,
+    @SerialName("message") val message: String,
+    @SerialName("data") val data: Long,
 )
