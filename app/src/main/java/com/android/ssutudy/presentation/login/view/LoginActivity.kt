@@ -20,6 +20,18 @@ class LoginActivity : BaseDataBindingActivity<ActivityLoginBinding>(R.layout.act
 
         setClickEvents()
         initObservers()
+        setAutoLogin()
+    }
+
+    private fun setAutoLogin() {
+        if (SharedPreferences.getString(TOKEN) != null) {
+            startActivity(
+                Intent(
+                    this, MainActivity::class.java
+                )
+            )
+            if (!isFinishing) finish()
+        }
     }
 
     private fun initObservers() {
