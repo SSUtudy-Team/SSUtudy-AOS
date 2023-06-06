@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.android.ssutudy.R
 import com.android.ssutudy.databinding.FragmentSignUpSecondBinding
 import com.android.ssutudy.presentation.signup.viewmodel.SignUpViewModel
+import com.android.ssutudy.util.extensions.getSelectedItems
 import com.android.ssutudy.util.extensions.submitList
 
 class SignUpSecondFragment : Fragment() {
@@ -40,7 +43,9 @@ class SignUpSecondFragment : Fragment() {
     private fun initSignUpBtnClickEvent() {
         binding.btnSignUpSecond.setOnClickListener {
             if (it.isSelected) {
-                //TODO: SIGN UP 로직 구현
+                activityViewModel.signUp(
+                    binding.layoutSignUpSecondCategory.getSelectedItems()
+                )
             }
         }
     }
@@ -55,12 +60,30 @@ class SignUpSecondFragment : Fragment() {
         binding.spinnerSignUpSecondMajor.adapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.spinner_major, R.layout.item_sign_up_second_spinner_major
         )
+        binding.spinnerSignUpSecondMajor.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                activityViewModel.major.value = resources.getStringArray(R.array.spinner_major)[p2]
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+
+        }
     }
 
     private fun initGradeSpinner() {
         binding.spinnerSignUpSecondGrade.adapter = ArrayAdapter.createFromResource(
             requireContext(), R.array.spinner_grade, R.layout.item_sign_up_second_spinner_grade
         )
+        binding.spinnerSignUpSecondGrade.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                activityViewModel.grade.value = p2 + 1
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+
+        }
     }
 
     private fun initFlexboxLayout() {
