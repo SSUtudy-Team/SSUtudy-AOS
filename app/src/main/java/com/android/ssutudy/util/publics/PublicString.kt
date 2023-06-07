@@ -5,4 +5,5 @@ object PublicString {
     const val INVALID_ITEM_ACCESSED = "Invalid Item Accessed"
     const val PREFERENCE_NAME = "auth"
     const val TOKEN = "token"
+    const val USER_ID = "user id"
 }
