@@ -40,14 +40,14 @@ object SharedPreferences {
         return preferences.getString(key, null)
     }
 
-    fun setBoolean(key: String, boolean: Boolean) {
+    fun setLong(key: String, value: Long) {
         preferences.edit {
-            putBoolean(key, boolean)
+            putLong(key, value)
         }
     }
 
-    fun getBoolean(key: String): Boolean {
-        return preferences.getBoolean(key, false)
+    fun getLong(key: String): Long {
+        return preferences.getLong(key, -1)
     }
 
     fun clear() {
