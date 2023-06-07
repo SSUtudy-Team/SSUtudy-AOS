@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ResponseHomeDto(
-    @SerialName("message") val message: String,
     @SerialName("success") val success: Boolean,
+    @SerialName("message") val message: String,
     @SerialName("data") val data: Data,
 ) {
     @Serializable
@@ -22,13 +22,13 @@ data class ResponseHomeDto(
 
         @Serializable
         data class RecommendStudy(
-            @SerialName("className") val className: String,
-            @SerialName("content") val content: String,
-            @SerialName("curUserCount") val curUserCount: Int,
             @SerialName("department") val department: String,
-            @SerialName("studyStatus") val studyStatus: String,
+            @SerialName("className") val className: String,
             @SerialName("title") val title: String,
+            @SerialName("content") val content: String,
             @SerialName("userCount") val userCount: Int,
+            @SerialName("curUserCount") val curUserCount: Int,
+            @SerialName("studyStatus") val studyStatus: String,
         )
     }
 }
