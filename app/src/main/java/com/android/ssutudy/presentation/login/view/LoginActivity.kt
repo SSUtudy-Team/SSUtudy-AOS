@@ -12,6 +12,7 @@ import com.android.ssutudy.presentation.main.view.MainActivity
 import com.android.ssutudy.presentation.signup.view.SignUpActivity
 import com.android.ssutudy.util.extensions.makeToastMessage
 import com.android.ssutudy.util.publics.PublicString.TOKEN
+import com.android.ssutudy.util.publics.PublicString.USER_ID
 
 class LoginActivity : BaseDataBindingActivity<ActivityLoginBinding>(R.layout.activity_login) {
     private val viewModel by viewModels<LoginViewModel>()
@@ -48,6 +49,7 @@ class LoginActivity : BaseDataBindingActivity<ActivityLoginBinding>(R.layout.act
     private fun initSuccessResponseObserver() {
         viewModel.loginSuccessResponse.observe(this) {
             SharedPreferences.setString(TOKEN, it.token)
+            SharedPreferences.setLong(USER_ID, it.userId)
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
