@@ -2,6 +2,7 @@ package com.android.ssutudy.data.remote
 
 import com.android.ssutudy.BuildConfig
 import com.android.ssutudy.data.remote.interceptor.TokenInterceptor
+import com.android.ssutudy.data.remote.service.HomeService
 import com.android.ssutudy.data.remote.service.LoginService
 import com.android.ssutudy.data.remote.service.SignUpService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
@@ -21,11 +22,15 @@ object ApiFactory {
             .build()
     }
 
+    private val json = Json {
+        ignoreUnknownKeys = true
+    }
+
     val retrofit: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(client)
-            .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
 
@@ -35,4 +40,5 @@ object ApiFactory {
 object ServicePool {
     val signUpService = ApiFactory.create<SignUpService>()
     val loginService = ApiFactory.create<LoginService>()
+    val homeService = ApiFactory.create<HomeService>()
 }
