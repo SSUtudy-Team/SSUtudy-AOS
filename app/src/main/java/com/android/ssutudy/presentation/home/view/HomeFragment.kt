@@ -13,11 +13,21 @@ import com.android.ssutudy.presentation.detail.view.DetailActivity
 import com.android.ssutudy.presentation.home.adapter.MyStudyAdapter
 import com.android.ssutudy.presentation.home.adapter.RecommendStudyAdapter
 import com.android.ssutudy.presentation.home.viewmodel.HomeViewModel
+import com.android.ssutudy.util.extensions.makeToastMessage
 
 class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>()
     private var myStudyAdapter: MyStudyAdapter? = null
     private var recommendStudyAdapter: RecommendStudyAdapter? = null
+
+    override fun onResume() {
+        super.onResume()
+        setData()
+    }
+
+    private fun setData() {
+        viewModel.getHomeData()
+    }
 
     override fun bindViewModelWithBinding() {
         binding.vm = viewModel
@@ -28,11 +38,30 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
 
         initAdapters()
         setClickEvents()
+        initObservers()
 
         binding.ivHomeAlarm.setOnClickListener {
             startActivity(Intent(requireContext(), DetailActivity::class.java))
         }
 
+    }
+
+    private fun initObservers() {
+        initSuccessResponseObserver()
+        initErrorResponseObserver()
+    }
+
+    private fun initErrorResponseObserver() {
+        viewModel.getHomeDataErrorResponse.observe(viewLifecycleOwner) {
+            makeToastMessage(it)
+        }
+    }
+
+    private fun initSuccessResponseObserver() {
+        viewModel.getHomeDataSuccessResponse.observe(viewLifecycleOwner) {
+            recommendStudyAdapter?.submitList(it.data.recommendStudy)
+            myStudyAdapter?.submitList(it.data.joinStudy)
+        }
     }
 
     private fun setClickEvents() {
@@ -49,16 +78,14 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
         initMyStudyAdapter()
         initRecommendStudyAdapter()
         initRecommendationSpinnerAdapter()
-
     }
 
     private fun initRecommendationSpinnerAdapter() {
-        binding.spinnerHomeRecommendation.adapter =
-            ArrayAdapter.createFromResource(
-                requireContext(),
-                R.array.spinner_ssutudy_recommendation,
-                R.layout.item_sign_up_second_spinner_major
-            )
+        binding.spinnerHomeRecommendation.adapter = ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.spinner_ssutudy_recommendation,
+            R.layout.item_sign_up_second_spinner_major
+        )
     }
 
     private fun initRecommendStudyAdapter() {
@@ -70,7 +97,6 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
         myStudyAdapter = MyStudyAdapter()
         binding.rvHomeMySsutudy.adapter = myStudyAdapter
     }
-
 
     override fun onDestroyView() {
         myStudyAdapter = null
