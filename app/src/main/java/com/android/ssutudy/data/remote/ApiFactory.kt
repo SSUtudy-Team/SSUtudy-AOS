@@ -5,6 +5,7 @@ import com.android.ssutudy.data.remote.interceptor.TokenInterceptor
 import com.android.ssutudy.data.remote.service.HomeService
 import com.android.ssutudy.data.remote.service.LoginService
 import com.android.ssutudy.data.remote.service.SignUpService
+import com.android.ssutudy.data.remote.service.UserInfoService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -41,4 +42,5 @@ object ServicePool {
     val signUpService = ApiFactory.create<SignUpService>()
     val loginService = ApiFactory.create<LoginService>()
     val homeService = ApiFactory.create<HomeService>()
+    val userInfoService = ApiFactory.create<UserInfoService>()
 }
