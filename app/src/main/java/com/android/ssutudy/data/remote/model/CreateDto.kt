@@ -14,12 +14,7 @@ data class RequestCreateDto(
     @SerialName("userCount") val userCount: Int,
     @SerialName("roomLink") val roomLink: String,
     @SerialName("categoryCodeDto") val categoryCodeDto: List<CategoryCode>,
-) {
-    @Serializable
-    data class CategoryCode(
-        @SerialName("categoryCode") val categoryCode: String,
-    )
-}
+)
 
 @Serializable
 data class ResponseCreateDto(
