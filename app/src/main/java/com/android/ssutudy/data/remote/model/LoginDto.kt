@@ -1,6 +1,5 @@
 package com.android.ssutudy.data.remote.model
 
-
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -12,6 +11,13 @@ data class RequestLoginDto(
 
 @Serializable
 data class ResponseLoginDto(
-    @SerialName("data") val token: String,
-    @SerialName("userId") val userId: Long,
-)
+    @SerialName("success") val success: Boolean,
+    @SerialName("message") val message: String,
+    @SerialName("data") val data: UserData,
+) {
+    @Serializable
+    data class UserData(
+        @SerialName("token") val token: String,
+        @SerialName("userId") val userId: Long,
+    )
+}
