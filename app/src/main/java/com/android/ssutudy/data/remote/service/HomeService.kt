@@ -7,6 +7,6 @@ import retrofit2.http.Path
 interface HomeService {
     @GET("users/home/{userId}")
     suspend fun getHomeData(
-        @Path("userId") userId: Long,
+        @Path("userId") userId: String,
     ): ResponseHomeDto
 }
