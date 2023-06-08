@@ -6,4 +6,5 @@ object PublicString {
     const val PREFERENCE_NAME = "auth"
     const val TOKEN = "token"
     const val USER_ID = "user id"
+    const val GET_USER_DATA = "get user data"
 }
