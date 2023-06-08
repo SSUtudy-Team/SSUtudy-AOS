@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.ssutudy.data.remote.ServicePool.signUpService
+import com.android.ssutudy.data.remote.model.CategoryCode
 import com.android.ssutudy.data.remote.model.RequestSignUpDto
-import com.android.ssutudy.data.remote.model.RequestSignUpDto.CategoryCodeDto
 import com.android.ssutudy.data.remote.model.ResponseSignUpDto
 import com.android.ssutudy.util.extensions.addSourceList
 import com.android.ssutudy.util.publics.PublicFunction.getErrorMessage
@@ -48,9 +48,9 @@ class SignUpViewModel : ViewModel() {
     val signUpErrorResponse: LiveData<String> = _signUpErrorResponse
     fun signUp(categoryList: List<String>) {
 
-        val categoryCodeList: MutableList<CategoryCodeDto> = mutableListOf()
+        val categoryCodeList: MutableList<CategoryCode> = mutableListOf()
         categoryList.map { category ->
-            categoryCodeList.add(CategoryCodeDto(category))
+            categoryCodeList.add(CategoryCode(category))
         }
 
         viewModelScope.launch {
