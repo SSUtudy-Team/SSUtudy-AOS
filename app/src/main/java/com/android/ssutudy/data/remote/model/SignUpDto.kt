@@ -11,13 +11,8 @@ data class RequestSignUpDto(
     @SerialName("name") val name: String,
     @SerialName("grade") val grade: Int,
     @SerialName("department") val department: String,
-    @SerialName("categoryCodeDtos") val categoryCodeDtos: List<CategoryCodeDto>,
-) {
-    @Serializable
-    data class CategoryCodeDto(
-        @SerialName("categoryCode") val categoryCode: String,
-    )
-}
+    @SerialName("categoryCodeDtos") val categoryCodeDtos: List<CategoryCode>,
+)
 
 @Serializable
 data class ResponseSignUpDto(
