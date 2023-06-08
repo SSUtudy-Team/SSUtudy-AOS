@@ -40,16 +40,6 @@ object SharedPreferences {
         return preferences.getString(key, null)
     }
 
-    fun setLong(key: String, value: Long) {
-        preferences.edit {
-            putLong(key, value)
-        }
-    }
-
-    fun getLong(key: String): Long {
-        return preferences.getLong(key, -1)
-    }
-
     fun clear() {
         preferences.edit {
             clear()
