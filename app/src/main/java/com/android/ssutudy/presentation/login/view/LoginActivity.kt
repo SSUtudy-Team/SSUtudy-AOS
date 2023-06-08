@@ -48,8 +48,8 @@ class LoginActivity : BaseDataBindingActivity<ActivityLoginBinding>(R.layout.act
 
     private fun initSuccessResponseObserver() {
         viewModel.loginSuccessResponse.observe(this) {
-            SharedPreferences.setString(TOKEN, it.token)
-            SharedPreferences.setLong(USER_ID, it.userId)
+            SharedPreferences.setString(TOKEN, it.data.token)
+            SharedPreferences.setString(USER_ID, it.data.userId.toString())
             startActivity(Intent(this, MainActivity::class.java))
         }
     }
