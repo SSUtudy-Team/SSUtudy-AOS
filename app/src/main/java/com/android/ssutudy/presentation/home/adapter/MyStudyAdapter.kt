@@ -52,7 +52,6 @@ class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
             )
             MyStudyContentViewHolder(binding)
         }
-
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
