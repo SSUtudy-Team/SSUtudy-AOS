@@ -31,16 +31,22 @@ class DetailBottomSheetDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun setClickEvents() {
-        setEndRecruitmentClickEvent()
-        setEndStudyClickEvent()
+        setDeleteClickEvent()
+        setEndClickEvent()
     }
 
-    private fun setEndStudyClickEvent() {
-
+    private fun setDeleteClickEvent() {
+        binding.tvDetailBottomSheetDelete.setOnClickListener {
+            viewModel.deleteStudy()
+            dismiss()
+        }
     }
 
-    private fun setEndRecruitmentClickEvent() {
-
+    private fun setEndClickEvent() {
+        binding.tvDetailBottomSheetEnd.setOnClickListener {
+            viewModel.endStudy()
+            dismiss()
+        }
     }
 
     override fun onDestroyView() {
