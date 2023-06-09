@@ -8,6 +8,7 @@ import com.android.ssutudy.data.remote.service.EndService
 import com.android.ssutudy.data.remote.service.GetStudyService
 import com.android.ssutudy.data.remote.service.GoOutService
 import com.android.ssutudy.data.remote.service.HomeService
+import com.android.ssutudy.data.remote.service.HomeTimeService
 import com.android.ssutudy.data.remote.service.InterestingCategoryService
 import com.android.ssutudy.data.remote.service.JoinService
 import com.android.ssutudy.data.remote.service.LoginService
@@ -53,4 +54,5 @@ object ServicePool {
     val getStudyService = ApiFactory.create<GetStudyService>()
     val joinService = ApiFactory.create<JoinService>()
     val goOutService = ApiFactory.create<GoOutService>()
+    val homeTimeService = ApiFactory.create<HomeTimeService>()
 }
