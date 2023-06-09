@@ -2,6 +2,7 @@ package com.android.ssutudy.data.remote
 
 import com.android.ssutudy.BuildConfig
 import com.android.ssutudy.data.remote.interceptor.TokenInterceptor
+import com.android.ssutudy.data.remote.service.CreateService
 import com.android.ssutudy.data.remote.service.HomeService
 import com.android.ssutudy.data.remote.service.InterestingCategoryService
 import com.android.ssutudy.data.remote.service.LoginService
@@ -45,4 +46,5 @@ object ServicePool {
     val homeService = ApiFactory.create<HomeService>()
     val userInfoService = ApiFactory.create<UserInfoService>()
     val interestingCategoryService = ApiFactory.create<InterestingCategoryService>()
+    val createService = ApiFactory.create<CreateService>()
 }
