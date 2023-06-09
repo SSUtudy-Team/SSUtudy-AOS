@@ -100,10 +100,9 @@
                 android:id="@+id/rv_home_my_ssutudy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="1dp"
                 android:orientation="horizontal"
                 android:paddingVertical="10dp"
-                android:paddingStart="0dp"
-                android:paddingEnd="10dp"
                 android:visibility="@{vm.doesMyStudyExist ? View.VISIBLE : View.GONE}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>

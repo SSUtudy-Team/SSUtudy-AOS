@@ -8,6 +8,7 @@ import com.android.ssutudy.data.remote.model.ResponseHomeDto.Data.JoinStudy
 import com.android.ssutudy.databinding.ItemMySsutudyContentBinding
 import com.android.ssutudy.databinding.ItemMySsutudyHeaderBinding
 import com.android.ssutudy.util.DiffUtilCallback
+import com.android.ssutudy.util.extensions.dpToPx
 
 class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
     ListAdapter<JoinStudy, RecyclerView.ViewHolder>(DiffUtilCallback<JoinStudy>()) {
@@ -55,10 +56,15 @@ class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (position == HEADER) (holder as? MyStudyHeaderViewHolder)?.onBind()
-            ?: Exception("holder can't cast by MyStudyContentViewHolder")
-        else (holder as? MyStudyContentViewHolder)?.onBind(currentList[position])
-            ?: Exception("holder can't cast by MyStudyContentViewHolder")
+        if (holder is MyStudyHeaderViewHolder) holder.onBind()
+        else {
+            (holder as? MyStudyContentViewHolder)?.onBind(currentList[position])
+            if (position == itemCount - 1) {
+                val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
+                params.marginEnd = holder.itemView.context.dpToPx(10) // 원하는 마진 값을 설정하세요.
+                holder.itemView.layoutParams = params
+            }
+        }
     }
 
     companion object {
