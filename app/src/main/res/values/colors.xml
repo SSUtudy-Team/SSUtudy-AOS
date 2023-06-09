@@ -22,5 +22,8 @@
     <!--blue-->
     <color name="blue_0066ff">#0066FF</color>
     <color name="blue_009bcb">#009BCB</color>
+    <!--red-->
     <color name="red_df0000">#DF0000</color>
+    <!--green-->
+    <color name="green_cbef9d">#CBEF9D</color>
 </resources>
