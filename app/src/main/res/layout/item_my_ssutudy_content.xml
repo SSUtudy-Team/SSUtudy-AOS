@@ -13,6 +13,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="3"
+        android:paddingHorizontal="10dp"
         android:textAppearance="@style/R14"
         tools:text="소프트웨어 프로젝트 나반 스터디룸" />
 </LinearLayout>
