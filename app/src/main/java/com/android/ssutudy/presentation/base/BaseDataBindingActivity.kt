@@ -29,7 +29,7 @@ abstract class BaseDataBindingActivity<DB : ViewDataBinding>(@LayoutRes private 
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        hideKeyboard()
+        hideKeyboard(binding.root)
         return super.dispatchTouchEvent(ev)
     }
 }

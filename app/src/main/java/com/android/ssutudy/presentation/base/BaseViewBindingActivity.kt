@@ -25,7 +25,7 @@ abstract class BaseViewBindingActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
-        hideKeyboard()
+        hideKeyboard(binding.root)
         return super.dispatchTouchEvent(ev)
     }
 }
