@@ -13,12 +13,12 @@ data class RequestCreateDto(
     @SerialName("content") val content: String,
     @SerialName("userCount") val userCount: Int,
     @SerialName("roomLink") val roomLink: String,
-    @SerialName("categoryCodeDto") val categoryCodeDto: List<CategoryCode>,
+    @SerialName("categoryCodeDtos") val categoryCodeDtos: List<CategoryCode>,
 )
 
 @Serializable
 data class ResponseCreateDto(
-    @SerialName("success") val success: String,
+    @SerialName("success") val success: Boolean,
     @SerialName("message") val message: String,
-    @SerialName("data") val data: String,
+    @SerialName("data") val data: Long,
 )
