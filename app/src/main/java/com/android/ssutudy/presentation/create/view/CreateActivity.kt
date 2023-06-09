@@ -7,6 +7,7 @@ import com.android.ssutudy.R
 import com.android.ssutudy.databinding.ActivityCreateBinding
 import com.android.ssutudy.presentation.base.BaseDataBindingActivity
 import com.android.ssutudy.presentation.create.viewmodel.CreateViewModel
+import com.android.ssutudy.util.extensions.makeToastMessage
 import com.android.ssutudy.util.extensions.submitList
 
 class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.activity_create) {
@@ -22,14 +23,27 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
 
     private fun setObservers() {
         observeCategoryList()
+        setCreateStudySuccessResponseObserver()
+        setCreateStudyErrorResponseObserver()
+    }
+
+    private fun setCreateStudyErrorResponseObserver() {
+        viewModel.createStudyErrorResponse.observe(this) {
+            makeToastMessage(it)
+        }
+    }
+
+    private fun setCreateStudySuccessResponseObserver() {
+        viewModel.createStudySuccessResponse.observe(this) {
+            makeToastMessage(it.message)
+            if (!isFinishing) finish()
+        }
     }
 
     private fun observeCategoryList() {
         viewModel.categoryList.observe(this) { categoryList ->
             binding.layoutCreateCategoryList.submitList(
-                false,
-                categoryList,
-                backgroundResource = R.layout.view_category_of_interest
+                false, categoryList, backgroundResource = R.layout.view_category_of_interest
             )
         }
     }
@@ -37,6 +51,20 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
     private fun setClickEvents() {
         setCloseBtnClickEvent()
         setCategoryClickEvent()
+        setCompleteTvClickEvent()
+    }
+
+    private fun setCompleteTvClickEvent() {
+        with(binding) {
+            tvCreateComplete.setOnClickListener {
+                viewModel.createStudy(
+                    spinnerCreateCollege.selectedItem.toString(),
+                    spinnerCreateMajor.selectedItem.toString(),
+                    spinnerCreateSubject.selectedItem.toString(),
+                    spinnerCreateParticipants.selectedItemPosition.plus(3)
+                )
+            }
+        }
     }
 
     private fun setCategoryClickEvent() {
@@ -68,25 +96,19 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
 
     private fun initParticipantsSpinner() {
         binding.spinnerCreateParticipants.adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.spinner_create_participants,
-            R.layout.item_sign_up_second_spinner_major
+            this, R.array.spinner_create_participants, R.layout.item_sign_up_second_spinner_major
         )
     }
 
     private fun initSubjectSpinner() {
         binding.spinnerCreateSubject.adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.subject_list,
-            R.layout.item_sign_up_second_spinner_major
+            this, R.array.subject_list, R.layout.item_sign_up_second_spinner_major
         )
     }
 
     private fun initMajorSpinner() {
         binding.spinnerCreateMajor.adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.spinner_major,
-            R.layout.item_sign_up_second_spinner_major
+            this, R.array.spinner_major, R.layout.item_sign_up_second_spinner_major
         )
     }
 
