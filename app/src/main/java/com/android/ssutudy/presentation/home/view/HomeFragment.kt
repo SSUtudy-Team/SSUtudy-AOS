@@ -2,6 +2,7 @@ package com.android.ssutudy.presentation.home.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
@@ -14,6 +15,7 @@ import com.android.ssutudy.presentation.home.adapter.MyStudyAdapter
 import com.android.ssutudy.presentation.home.adapter.RecommendStudyAdapter
 import com.android.ssutudy.presentation.home.viewmodel.HomeViewModel
 import com.android.ssutudy.util.extensions.makeToastMessage
+import com.android.ssutudy.util.publics.PublicString.TAG
 
 class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>()
@@ -22,11 +24,13 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
 
     override fun onResume() {
         super.onResume()
+        Log.e(TAG, "onResume")
         setData()
     }
 
     private fun setData() {
         viewModel.getHomeData()
+        Log.e(TAG, "getHomeData in fragment")
     }
 
     override fun bindViewModelWithBinding() {
@@ -53,6 +57,7 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     }
 
     private fun initSuccessResponseObserver() {
+        Log.e(TAG, "success response observer")
         viewModel.getHomeDataSuccessResponse.observe(viewLifecycleOwner) {
             recommendStudyAdapter?.submitList(it.data.recommendStudy)
             val myStudyDummyList = listOf(

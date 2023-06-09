@@ -1,5 +1,6 @@
 package com.android.ssutudy.presentation.home.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,7 @@ import com.android.ssutudy.data.local.SharedPreferences
 import com.android.ssutudy.data.remote.ServicePool.homeService
 import com.android.ssutudy.data.remote.model.ResponseHomeDto
 import com.android.ssutudy.util.publics.PublicFunction.getErrorMessage
+import com.android.ssutudy.util.publics.PublicString
 import com.android.ssutudy.util.publics.PublicString.USER_ID
 import kotlinx.coroutines.launch
 
@@ -25,6 +27,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun getHomeData() {
+        Log.e(PublicString.TAG, "getHomeData in viewModel")
         val userId: String? = SharedPreferences.getString(USER_ID)
         if (userId != null) {
             viewModelScope.launch {
