@@ -6,7 +6,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.android.ssutudy.R
-import com.android.ssutudy.data.remote.model.ResponseHomeDto.Data.RecommendStudy
+import com.android.ssutudy.data.remote.model.Study
 import com.android.ssutudy.databinding.ItemRecommendationSsutudyBinding
 import com.android.ssutudy.util.DiffUtilCallback
 import com.android.ssutudy.util.publics.PublicString.END
@@ -14,13 +14,13 @@ import com.android.ssutudy.util.publics.PublicString.RECRUITING
 import com.android.ssutudy.util.publics.PublicString.RECRUITMENT_COMPLETE
 
 class RecommendStudyAdapter(private val startDetailActivity: (String) -> Unit) :
-    ListAdapter<RecommendStudy, RecommendStudyAdapter.RecommendViewHolder>(DiffUtilCallback<RecommendStudy>()) {
+    ListAdapter<Study, RecommendStudyAdapter.RecommendViewHolder>(DiffUtilCallback<Study>()) {
 
     class RecommendViewHolder(
         private val binding: ItemRecommendationSsutudyBinding,
         private val startDetailActivity: (String) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: RecommendStudy) {
+        fun onBind(item: Study) {
             item.apply {
                 with(binding) {
                     tvItemRecommendationMajor.text = department
