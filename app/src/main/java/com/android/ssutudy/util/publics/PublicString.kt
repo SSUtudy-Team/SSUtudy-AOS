@@ -7,4 +7,8 @@ object PublicString {
     const val TOKEN = "token"
     const val USER_ID = "user id"
     const val GET_USER_DATA = "get user data"
+    const val STUDY_ID = "study id"
+    const val RECRUITING = "모집중"
+    const val RECRUITMENT_COMPLETE = "모집완료"
+    const val END = "종료"
 }
