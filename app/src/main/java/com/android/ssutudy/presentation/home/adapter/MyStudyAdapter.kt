@@ -9,15 +9,23 @@ import com.android.ssutudy.databinding.ItemMySsutudyContentBinding
 import com.android.ssutudy.databinding.ItemMySsutudyHeaderBinding
 import com.android.ssutudy.util.DiffUtilCallback
 
-class MyStudyAdapter :
+class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
     ListAdapter<JoinStudy, RecyclerView.ViewHolder>(DiffUtilCallback<JoinStudy>()) {
     override fun getItemViewType(position: Int): Int {
         return if (position == HEADER) HEADER
         else CONTENT
     }
 
-    class MyStudyHeaderViewHolder(binding: ItemMySsutudyHeaderBinding) :
+    class MyStudyHeaderViewHolder(
+        private val binding: ItemMySsutudyHeaderBinding,
+        private val startCreateActivity: () -> Unit,
+    ) :
         RecyclerView.ViewHolder(binding.root) {
+        fun onBind() {
+            binding.root.setOnClickListener {
+                startCreateActivity.invoke()
+            }
+        }
     }
 
     class MyStudyContentViewHolder(private val binding: ItemMySsutudyContentBinding) :
@@ -30,7 +38,7 @@ class MyStudyAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == HEADER) {
             val binding = ItemMySsutudyHeaderBinding.inflate(LayoutInflater.from(parent.context))
-            MyStudyHeaderViewHolder(binding)
+            MyStudyHeaderViewHolder(binding, startCreateActivity)
         } else {
             val binding = ItemMySsutudyContentBinding.inflate(LayoutInflater.from(parent.context))
             MyStudyContentViewHolder(binding)
@@ -39,7 +47,9 @@ class MyStudyAdapter :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (position != HEADER) (holder as? MyStudyContentViewHolder)?.onBind(currentList[position])
+        if (position == HEADER) (holder as? MyStudyHeaderViewHolder)?.onBind()
+            ?: Exception("holder can't cast by MyStudyContentViewHolder")
+        else (holder as? MyStudyContentViewHolder)?.onBind(currentList[position])
             ?: Exception("holder can't cast by MyStudyContentViewHolder")
     }
 

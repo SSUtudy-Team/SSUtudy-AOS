@@ -95,7 +95,8 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     }
 
     private fun initMyStudyAdapter() {
-        myStudyAdapter = MyStudyAdapter()
+        myStudyAdapter =
+            MyStudyAdapter { startActivity(Intent(requireContext(), CreateActivity::class.java)) }
         binding.rvHomeMySsutudy.adapter = myStudyAdapter
     }
 
