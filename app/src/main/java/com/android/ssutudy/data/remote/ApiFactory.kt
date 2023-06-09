@@ -3,8 +3,13 @@ package com.android.ssutudy.data.remote
 import com.android.ssutudy.BuildConfig
 import com.android.ssutudy.data.remote.interceptor.TokenInterceptor
 import com.android.ssutudy.data.remote.service.CreateService
+import com.android.ssutudy.data.remote.service.DeleteService
+import com.android.ssutudy.data.remote.service.EndService
+import com.android.ssutudy.data.remote.service.GetStudyService
+import com.android.ssutudy.data.remote.service.GoOutService
 import com.android.ssutudy.data.remote.service.HomeService
 import com.android.ssutudy.data.remote.service.InterestingCategoryService
+import com.android.ssutudy.data.remote.service.JoinService
 import com.android.ssutudy.data.remote.service.LoginService
 import com.android.ssutudy.data.remote.service.SignUpService
 import com.android.ssutudy.data.remote.service.UserInfoService
@@ -21,8 +26,7 @@ object ApiFactory {
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level =
                     if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-            })
-            .build()
+            }).build()
     }
 
     private val json = Json {
@@ -30,11 +34,8 @@ object ApiFactory {
     }
 
     val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
-            .client(client)
-            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
-            .build()
+        Retrofit.Builder().baseUrl(BuildConfig.BASE_URL).client(client)
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType())).build()
     }
 
     inline fun <reified T> create(): T = retrofit.create<T>(T::class.java)
@@ -47,4 +48,9 @@ object ServicePool {
     val userInfoService = ApiFactory.create<UserInfoService>()
     val interestingCategoryService = ApiFactory.create<InterestingCategoryService>()
     val createService = ApiFactory.create<CreateService>()
+    val endService = ApiFactory.create<EndService>()
+    val deleteService = ApiFactory.create<DeleteService>()
+    val getStudyService = ApiFactory.create<GetStudyService>()
+    val joinService = ApiFactory.create<JoinService>()
+    val goOutService = ApiFactory.create<GoOutService>()
 }
