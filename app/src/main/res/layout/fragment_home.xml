@@ -62,6 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,9 +71,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_stroke_gray_d5d5d5_1_radius_10"
                 android:orientation="vertical"
-                android:visibility="@{vm.doesMySSUtudyExist ? View.GONE : View.VISIBLE}">
+                android:visibility="@{vm.doesMyStudyExist ? View.GONE : View.VISIBLE}">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -84,6 +84,7 @@
                     android:textColor="@color/gray_464646" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_home_create"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
@@ -100,8 +101,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp"
-                android:visibility="@{vm.doesMySSUtudyExist ? View.VISIBLE : View.GONE}"
+                android:paddingVertical="10dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="10dp"
+                android:visibility="@{vm.doesMyStudyExist ? View.VISIBLE : View.GONE}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>
 
@@ -121,7 +124,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            android:text="설정한 관심 학과에서 개설된 SSUtudy를 추천해드려요."
+            android:text="@string/recommendation_study_desc"
             android:textAppearance="@style/R12"
             android:textColor="@color/gray_464646"
             app:layout_constraintEnd_toStartOf="@id/spinner_home_recommendation"
@@ -143,6 +146,8 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_home_recommendation_desc"
             tools:listitem="@layout/item_recommendation_ssutudy" />
