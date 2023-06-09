@@ -37,10 +37,18 @@ class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == HEADER) {
-            val binding = ItemMySsutudyHeaderBinding.inflate(LayoutInflater.from(parent.context))
+            val binding = ItemMySsutudyHeaderBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
             MyStudyHeaderViewHolder(binding, startCreateActivity)
         } else {
-            val binding = ItemMySsutudyContentBinding.inflate(LayoutInflater.from(parent.context))
+            val binding = ItemMySsutudyContentBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
             MyStudyContentViewHolder(binding)
         }
 

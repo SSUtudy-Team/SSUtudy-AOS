@@ -34,7 +34,7 @@ class RecommendStudyAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecommendViewHolder {
-        val binding = ItemRecommendationSsutudyBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = ItemRecommendationSsutudyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RecommendViewHolder(binding)
     }
 
