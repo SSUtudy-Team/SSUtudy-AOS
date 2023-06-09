@@ -10,7 +10,6 @@ import com.android.ssutudy.data.remote.model.ResponseHomeDto
 import com.android.ssutudy.databinding.FragmentHomeBinding
 import com.android.ssutudy.presentation.base.BaseDataBindingFragment
 import com.android.ssutudy.presentation.create.view.CreateActivity
-import com.android.ssutudy.presentation.detail.view.DetailActivity
 import com.android.ssutudy.presentation.home.adapter.MyStudyAdapter
 import com.android.ssutudy.presentation.home.adapter.RecommendStudyAdapter
 import com.android.ssutudy.presentation.home.viewmodel.HomeViewModel
@@ -40,11 +39,6 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
         initAdapters()
         setClickEvents()
         initObservers()
-
-        binding.ivHomeAlarm.setOnClickListener {
-            startActivity(Intent(requireContext(), DetailActivity::class.java))
-        }
-
     }
 
     private fun initObservers() {
