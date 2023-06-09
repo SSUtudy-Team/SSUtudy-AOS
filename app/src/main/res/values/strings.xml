@@ -48,6 +48,7 @@
     <string name="current_max_participants">%s명 / 최대 %s명</string>
     <string name="recommendation_study_desc">설정한 관심 학과에서 개설된 SSUtudy를 추천해드려요.</string>
     <string name="input_intro">스터디에 대해 자유롭게 소개해주세요.</string>
+    <string name="open_chat">오픈채팅 링크</string>
 
     <string-array name="spinner_grade">
         <item>1학년</item>
