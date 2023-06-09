@@ -128,6 +128,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
                     android:hint="스터디의 주제를 입력해주세요."
+                    android:inputType="text"
                     android:paddingVertical="12dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="8dp"
@@ -153,6 +154,7 @@
                     android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
                     android:gravity="top"
                     android:hint="@string/input_intro"
+                    android:inputType="text"
                     android:paddingVertical="12dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="8dp"
@@ -216,6 +218,32 @@
                     app:layout_constraintBottom_toBottomOf="@id/tv_create_max_participants"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_create_max_participants" />
+
+                <TextView
+                    android:id="@+id/tv_create_open_chat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/open_chat"
+                    android:textAppearance="@style/R12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/spinner_create_participants" />
+
+                <EditText
+                    android:id="@+id/et_create_open_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
+                    android:hint="카카오톡 오픈 채팅 링크를 입력해주세요."
+                    android:inputType="textUri"
+                    android:paddingVertical="12dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="8dp"
+                    android:text="@={vm.openChatLink}"
+                    android:textAppearance="@style/R16"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_open_chat" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

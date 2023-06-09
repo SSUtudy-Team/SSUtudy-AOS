@@ -18,11 +18,11 @@ import kotlinx.coroutines.launch
 
 class CreateViewModel : ViewModel() {
     val topic: MutableLiveData<String> = MutableLiveData()
-
     val intro: MutableLiveData<String> = MutableLiveData()
+    val openChatLink: MutableLiveData<String> = MutableLiveData()
 
     private fun isValidToCreate() =
-        !topic.value.isNullOrBlank() && !intro.value.isNullOrEmpty() && isCategorySelected()
+        !topic.value.isNullOrBlank() && !intro.value.isNullOrBlank() && isCategorySelected() && !openChatLink.value.isNullOrBlank()
 
     private fun isCategorySelected(): Boolean {
         return if (countCategory.value == null) false
@@ -64,7 +64,7 @@ class CreateViewModel : ViewModel() {
         get() = _countCategory
 
     val canUserCreate: MediatorLiveData<Boolean> = MediatorLiveData<Boolean>().apply {
-        addSourceList(topic, intro, _countCategory) {
+        addSourceList(topic, intro, _countCategory, openChatLink) {
             isValidToCreate()
         }
     }
@@ -87,7 +87,7 @@ class CreateViewModel : ViewModel() {
                         topic.value ?: "",
                         intro.value ?: "",
                         userCount,
-                        roomLink = "www.naver.com",
+                        openChatLink.value ?: "",
                         categoryCodeList.value ?: emptyList()
                     )
                 )
