@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import com.android.ssutudy.R
+import com.android.ssutudy.data.remote.model.ResponseHomeDto
 import com.android.ssutudy.databinding.FragmentHomeBinding
 import com.android.ssutudy.presentation.base.BaseDataBindingFragment
 import com.android.ssutudy.presentation.create.view.CreateActivity
@@ -60,7 +61,13 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     private fun initSuccessResponseObserver() {
         viewModel.getHomeDataSuccessResponse.observe(viewLifecycleOwner) {
             recommendStudyAdapter?.submitList(it.data.recommendStudy)
-            myStudyAdapter?.submitList(it.data.joinStudy)
+            val myStudyDummyList = listOf(
+                ResponseHomeDto.Data.JoinStudy(
+                    ""
+                )
+            )
+            val myStudyList = myStudyDummyList + it.data.joinStudy
+            myStudyAdapter?.submitList(myStudyList)
         }
     }
 
