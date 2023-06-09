@@ -11,16 +11,27 @@ import com.android.ssutudy.data.remote.model.ResponseHomeDto
 import com.android.ssutudy.databinding.FragmentHomeBinding
 import com.android.ssutudy.presentation.base.BaseDataBindingFragment
 import com.android.ssutudy.presentation.create.view.CreateActivity
+import com.android.ssutudy.presentation.detail.view.DetailActivity
 import com.android.ssutudy.presentation.home.adapter.MyStudyAdapter
 import com.android.ssutudy.presentation.home.adapter.RecommendStudyAdapter
 import com.android.ssutudy.presentation.home.viewmodel.HomeViewModel
 import com.android.ssutudy.util.extensions.makeToastMessage
+import com.android.ssutudy.util.publics.PublicString.STUDY_ID
 import com.android.ssutudy.util.publics.PublicString.TAG
 
 class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>()
     private var myStudyAdapter: MyStudyAdapter? = null
     private var recommendStudyAdapter: RecommendStudyAdapter? = null
+
+    private val startDetailActivity: (String) -> Unit = { studyId ->
+        val intent = Intent(requireContext(), DetailActivity::class.java).apply {
+            putExtra(STUDY_ID, studyId)
+        }
+        startActivity(intent)
+    }
+    private val startCreateActivity: () -> Unit =
+        { startActivity(Intent(requireContext(), CreateActivity::class.java)) }
 
     override fun onResume() {
         super.onResume()
@@ -62,7 +73,7 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
             recommendStudyAdapter?.submitList(it.data.recommendStudy)
             val myStudyDummyList = listOf(
                 ResponseHomeDto.Data.JoinStudy(
-                    ""
+                    "", -1
                 )
             )
             val myStudyList = myStudyDummyList + it.data.joinStudy
@@ -95,13 +106,13 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     }
 
     private fun initRecommendStudyAdapter() {
-        recommendStudyAdapter = RecommendStudyAdapter()
+        recommendStudyAdapter = RecommendStudyAdapter(startDetailActivity)
         binding.rvHomeRecommendation.adapter = recommendStudyAdapter
     }
 
     private fun initMyStudyAdapter() {
         myStudyAdapter =
-            MyStudyAdapter { startActivity(Intent(requireContext(), CreateActivity::class.java)) }
+            MyStudyAdapter(startCreateActivity, startDetailActivity)
         binding.rvHomeMySsutudy.adapter = myStudyAdapter
     }
 
