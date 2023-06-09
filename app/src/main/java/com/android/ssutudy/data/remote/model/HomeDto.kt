@@ -18,6 +18,7 @@ data class ResponseHomeDto(
         @Serializable
         data class JoinStudy(
             @SerialName("title") val title: String,
+            @SerialName("studyId") val studyId: Long,
         )
 
         @Serializable
@@ -29,6 +30,7 @@ data class ResponseHomeDto(
             @SerialName("userCount") val userCount: Int,
             @SerialName("curUserCount") val curUserCount: Int,
             @SerialName("studyStatus") val studyStatus: String,
+            @SerialName("studyId") val studyId: Long,
         )
     }
 }
