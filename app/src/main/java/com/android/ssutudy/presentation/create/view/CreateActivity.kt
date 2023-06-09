@@ -36,6 +36,7 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
     private fun setCreateStudySuccessResponseObserver() {
         viewModel.createStudySuccessResponse.observe(this) {
             makeToastMessage(it.message)
+            setResult(RESULT_OK)
             if (!isFinishing) finish()
         }
     }
@@ -84,6 +85,7 @@ class CreateActivity : BaseDataBindingActivity<ActivityCreateBinding>(R.layout.a
     private fun setCloseBtnClickEvent() {
         binding.ivCreateClose.setOnClickListener {
             if (!isFinishing) finish()
+            setResult(RESULT_CANCELED)
         }
     }
 

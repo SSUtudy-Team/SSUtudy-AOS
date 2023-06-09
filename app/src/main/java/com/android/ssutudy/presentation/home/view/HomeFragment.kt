@@ -1,12 +1,13 @@
 package com.android.ssutudy.presentation.home.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.android.ssutudy.R
 import com.android.ssutudy.data.remote.model.ResponseHomeDto
@@ -19,12 +20,18 @@ import com.android.ssutudy.presentation.home.adapter.RecommendStudyAdapter
 import com.android.ssutudy.presentation.home.viewmodel.HomeViewModel
 import com.android.ssutudy.util.extensions.makeToastMessage
 import com.android.ssutudy.util.publics.PublicString.STUDY_ID
-import com.android.ssutudy.util.publics.PublicString.TAG
 
 class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val viewModel by viewModels<HomeViewModel>()
     private var myStudyAdapter: MyStudyAdapter? = null
     private var recommendStudyAdapter: RecommendStudyAdapter? = null
+    private val createActivityResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            viewModel.getHomeData()
+        }
+    }
 
     private val startDetailActivity: (String) -> Unit = { studyId ->
         val intent = Intent(requireContext(), DetailActivity::class.java).apply {
@@ -32,8 +39,13 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
         }
         startActivity(intent)
     }
-    private val startCreateActivity: () -> Unit =
-        { startActivity(Intent(requireContext(), CreateActivity::class.java)) }
+    private val startCreateActivity: () -> Unit = {
+        createActivityResultLauncher.launch(
+            Intent(
+                requireActivity(), CreateActivity::class.java
+            )
+        )
+    }
 
     private fun setData() {
         viewModel.getHomeData()
@@ -87,7 +99,6 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     }
 
     private fun initHomeSuccessResponseObserver() {
-        Log.e(TAG, "success response observer")
         viewModel.getHomeDataSuccessResponse.observe(viewLifecycleOwner) {
             recommendStudyAdapter?.submitList(it.data.recommendStudy)
             val myStudyDummyList = listOf(
