@@ -152,7 +152,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/bg_solid_gray_f9f6f6_radius_8"
                     android:gravity="top"
-                    android:hint="@string/input_topic"
+                    android:hint="@string/input_intro"
                     android:paddingVertical="12dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="8dp"
