@@ -35,15 +35,8 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     private val startCreateActivity: () -> Unit =
         { startActivity(Intent(requireContext(), CreateActivity::class.java)) }
 
-    override fun onResume() {
-        super.onResume()
-        Log.e(TAG, "onResume")
-        setData()
-    }
-
     private fun setData() {
         viewModel.getHomeData()
-        Log.e(TAG, "getHomeData in fragment")
     }
 
     override fun bindViewModelWithBinding() {
@@ -53,6 +46,7 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setData()
         initAdapters()
         setClickEvents()
         initObservers()

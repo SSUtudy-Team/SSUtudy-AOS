@@ -15,9 +15,6 @@ import com.android.ssutudy.util.publics.PublicFunction.makeLog
 import com.android.ssutudy.util.publics.PublicString.INVALID_ITEM_ACCESSED
 
 class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
-    private val homeFragment by lazy { HomeFragment() }
-    private val myPageFragment by lazy { MyPageFragment() }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,8 +29,8 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
         with(binding.bnvMain) {
             setOnItemSelectedListener {
                 when (it.itemId) {
-                    R.id.menu_home -> changeFragment(homeFragment)
-                    R.id.menu_my_page -> changeFragment(myPageFragment)
+                    R.id.menu_home -> changeFragment(HomeFragment())
+                    R.id.menu_my_page -> changeFragment(MyPageFragment())
                     R.id.menu_create -> {
                         startActivity(
                             Intent(this@MainActivity, CreateActivity::class.java)
@@ -54,7 +51,7 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
     private fun addFirstFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null)
             supportFragmentManager.commit {
-                replace(R.id.fcv_main, homeFragment)
+                replace(R.id.fcv_main, HomeFragment())
             }
     }
 
