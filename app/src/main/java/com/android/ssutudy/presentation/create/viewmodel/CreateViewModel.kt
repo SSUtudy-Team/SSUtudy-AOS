@@ -4,7 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
+import com.android.ssutudy.data.local.SharedPreferences
+import com.android.ssutudy.data.remote.ServicePool.createService
+import com.android.ssutudy.data.remote.model.CategoryCode
+import com.android.ssutudy.data.remote.model.RequestCreateDto
+import com.android.ssutudy.data.remote.model.ResponseCreateDto
 import com.android.ssutudy.util.extensions.addSourceList
+import com.android.ssutudy.util.publics.PublicFunction.getErrorMessage
+import com.android.ssutudy.util.publics.PublicString
+import kotlinx.coroutines.launch
 
 class CreateViewModel : ViewModel() {
     val topic: MutableLiveData<String> = MutableLiveData()
@@ -15,19 +25,27 @@ class CreateViewModel : ViewModel() {
         !topic.value.isNullOrBlank() && !intro.value.isNullOrEmpty() && isCategorySelected()
 
     private fun isCategorySelected(): Boolean {
-        return if (countCategory.value == null)
-            false
+        return if (countCategory.value == null) false
         else {
             countCategory.value!! > 0
         }
     }
 
-    private val _categoryList: MutableLiveData<List<String>> =
+    private val _categoryCodeList: MutableLiveData<List<CategoryCode>> =
         MutableLiveData(emptyList())
-    val categoryList: LiveData<List<String>> = _categoryList
+    val categoryCodeList: LiveData<List<CategoryCode>> = _categoryCodeList
+    val categoryList: LiveData<List<String>> = _categoryCodeList.map {
+        val categoryList = mutableListOf<String>()
+        it.forEach { categoryCode -> categoryList.add(categoryCode.categoryCode) }
+        categoryList
+    }
 
     fun setCategoryList(newCategoryList: List<String>) {
-        _categoryList.value = newCategoryList
+        val newCategoryCodeList = mutableListOf<CategoryCode>()
+        newCategoryList.forEach {
+            newCategoryCodeList.add(CategoryCode(it))
+        }
+        _categoryCodeList.value = newCategoryCodeList
     }
 
     private val _countCategory: MutableLiveData<Int> = MutableLiveData(0)
@@ -48,6 +66,36 @@ class CreateViewModel : ViewModel() {
     val canUserCreate: MediatorLiveData<Boolean> = MediatorLiveData<Boolean>().apply {
         addSourceList(topic, intro, _countCategory) {
             isValidToCreate()
+        }
+    }
+
+    private val _createStudySuccessResponse: MutableLiveData<ResponseCreateDto> = MutableLiveData()
+    val createStudySuccessResponse: LiveData<ResponseCreateDto> = _createStudySuccessResponse
+
+    private val _createStudyErrorResponse: MutableLiveData<String> = MutableLiveData()
+    val createStudyErrorResponse: LiveData<String> = _createStudyErrorResponse
+
+    fun createStudy(college: String, department: String, className: String, userCount: Int) {
+        val userId: String = SharedPreferences.getString(PublicString.USER_ID) ?: return
+        viewModelScope.launch {
+            kotlin.runCatching {
+                createService.createStudy(
+                    userId, RequestCreateDto(
+                        college,
+                        department,
+                        className,
+                        topic.value ?: "",
+                        intro.value ?: "",
+                        userCount,
+                        roomLink = "www.naver.com",
+                        categoryCodeList.value ?: emptyList()
+                    )
+                )
+
+            }.fold(onSuccess = { response -> _createStudySuccessResponse.value = response },
+                onFailure = { response ->
+                    _createStudyErrorResponse.value = getErrorMessage(response)
+                })
         }
     }
 }
