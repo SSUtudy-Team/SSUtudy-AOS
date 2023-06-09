@@ -10,7 +10,10 @@ import com.android.ssutudy.databinding.ItemMySsutudyHeaderBinding
 import com.android.ssutudy.util.DiffUtilCallback
 import com.android.ssutudy.util.extensions.dpToPx
 
-class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
+class MyStudyAdapter(
+    private val startCreateActivity: () -> Unit,
+    private val startDetailActivity: (String) -> Unit,
+) :
     ListAdapter<JoinStudy, RecyclerView.ViewHolder>(DiffUtilCallback<JoinStudy>()) {
     override fun getItemViewType(position: Int): Int {
         return if (position == HEADER) HEADER
@@ -29,10 +32,18 @@ class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
         }
     }
 
-    class MyStudyContentViewHolder(private val binding: ItemMySsutudyContentBinding) :
+    class MyStudyContentViewHolder(
+        private val binding: ItemMySsutudyContentBinding,
+        private val startDetailActivity: (String) -> Unit,
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: JoinStudy) {
-            binding.tvItemMyStudy.text = item.title
+            with(binding.tvItemMyStudy) {
+                text = item.title
+                setOnClickListener {
+                    startDetailActivity.invoke(item.studyId.toString())
+                }
+            }
         }
     }
 
@@ -50,7 +61,7 @@ class MyStudyAdapter(private val startCreateActivity: () -> Unit) :
                 parent,
                 false
             )
-            MyStudyContentViewHolder(binding)
+            MyStudyContentViewHolder(binding, startDetailActivity)
         }
     }
 
