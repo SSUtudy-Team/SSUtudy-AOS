@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import com.android.ssutudy.R
@@ -57,17 +59,40 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     }
 
     private fun initObservers() {
-        initSuccessResponseObserver()
-        initErrorResponseObserver()
+        initHomeResponseObserver()
+        initHomeTimeResponseObserver()
+
     }
 
-    private fun initErrorResponseObserver() {
+    private fun initHomeTimeResponseObserver() {
+        initHomeTimeSuccessResponseObserver()
+        initHomeTimeErrorResponseObserver()
+    }
+
+    private fun initHomeTimeErrorResponseObserver() {
+        viewModel.getHomeTimeDataErrorResponse.observe(viewLifecycleOwner) {
+            makeToastMessage(it)
+        }
+    }
+
+    private fun initHomeTimeSuccessResponseObserver() {
+        viewModel.getHomeTimeDataSuccessResponse.observe(viewLifecycleOwner) {
+            recommendStudyAdapter?.submitList(it.data)
+        }
+    }
+
+    private fun initHomeResponseObserver() {
+        initHomeSuccessResponseObserver()
+        initHomeErrorResponseObserver()
+    }
+
+    private fun initHomeErrorResponseObserver() {
         viewModel.getHomeDataErrorResponse.observe(viewLifecycleOwner) {
             makeToastMessage(it)
         }
     }
 
-    private fun initSuccessResponseObserver() {
+    private fun initHomeSuccessResponseObserver() {
         Log.e(TAG, "success response observer")
         viewModel.getHomeDataSuccessResponse.observe(viewLifecycleOwner) {
             recommendStudyAdapter?.submitList(it.data.recommendStudy)
@@ -103,6 +128,16 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
             R.array.spinner_ssutudy_recommendation,
             R.layout.item_sign_up_second_spinner_major
         )
+
+        binding.spinnerHomeRecommendation.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                if (p2 == RECOMMENDATION_ORDER) viewModel.getHomeData()
+                else viewModel.getHomeTimeData()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
     }
 
     private fun initRecommendStudyAdapter() {
@@ -111,8 +146,7 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     }
 
     private fun initMyStudyAdapter() {
-        myStudyAdapter =
-            MyStudyAdapter(startCreateActivity, startDetailActivity)
+        myStudyAdapter = MyStudyAdapter(startCreateActivity, startDetailActivity)
         binding.rvHomeMySsutudy.adapter = myStudyAdapter
     }
 
@@ -120,5 +154,10 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
         myStudyAdapter = null
         recommendStudyAdapter = null
         super.onDestroyView()
+    }
+
+    companion object {
+        const val RECOMMENDATION_ORDER = 0
+        const val NEWEST = 1
     }
 }
