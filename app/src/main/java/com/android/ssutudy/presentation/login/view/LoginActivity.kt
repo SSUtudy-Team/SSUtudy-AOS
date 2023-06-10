@@ -51,6 +51,7 @@ class LoginActivity : BaseDataBindingActivity<ActivityLoginBinding>(R.layout.act
             SharedPreferences.setString(TOKEN, it.data.token)
             SharedPreferences.setString(USER_ID, it.data.userId.toString())
             startActivity(Intent(this, MainActivity::class.java))
+            if (!isFinishing) finish()
         }
     }
 
