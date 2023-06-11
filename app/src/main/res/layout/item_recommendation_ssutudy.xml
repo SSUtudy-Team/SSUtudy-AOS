@@ -46,14 +46,17 @@
 
     <TextView
         android:id="@+id/tv_item_recommendation_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5sp"
+        android:layout_marginEnd="12dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:textAppearance="@style/B16"
-        app:layout_constraintBottom_toBottomOf="@id/tv_item_recommendation_state"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_item_recommendation_state"
         app:layout_constraintTop_toTopOf="@id/tv_item_recommendation_state"
-        tools:text="1일 1코테 문제풀기" />
+        tools:text="1일 1코테 문제풀기1일 1코테 문제풀기1일 1코테 문제풀기1일 1코테 문제풀기1일 1코테 문제풀기1일 1코테 문제풀기1일 1코테 문제풀기1일 1코테 문제풀기" />
 
     <TextView
         android:id="@+id/tv_item_recommendation_content"
@@ -66,7 +69,7 @@
         android:textAppearance="@style/R14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_item_recommendation_state"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_recommendation_title"
         tools:text="스터디 목적이나 간단한 설명들이 나옴. 스터디 목적이나 간단한 설명들이 나옴. 스터디 목적이나 간단한 설명들이 나옴. 스터디 목적이나 간단한 설명들이 나옴. 스터디 목적이나 간단한 설명들이 나옴. " />
 
     <LinearLayout
