@@ -56,6 +56,7 @@ class DetailActivity :
     private fun initDeleteResultObservers() {
         viewModel.deleteSuccessResponse.observe(this) {
             makeToastMessage(it.message)
+            setResult(RESULT_OK)
             if (!isFinishing) finish()
         }
         viewModel.deleteErrorResponse.observe(this) {

@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.android.ssutudy.R
@@ -25,20 +26,16 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
     private val viewModel by viewModels<HomeViewModel>()
     private var myStudyAdapter: MyStudyAdapter? = null
     private var recommendStudyAdapter: RecommendStudyAdapter? = null
-    private val createActivityResultLauncher = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            viewModel.getHomeData()
-        }
-    }
+    private lateinit var createActivityResultLauncher: ActivityResultLauncher<Intent>
+    private lateinit var detailActivityResultLauncher: ActivityResultLauncher<Intent>
 
     private val startDetailActivity: (String) -> Unit = { studyId ->
         val intent = Intent(requireContext(), DetailActivity::class.java).apply {
             putExtra(STUDY_ID, studyId)
         }
-        startActivity(intent)
+        detailActivityResultLauncher.launch(intent)
     }
+
     private val startCreateActivity: () -> Unit = {
         createActivityResultLauncher.launch(
             Intent(
@@ -59,9 +56,28 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
         super.onViewCreated(view, savedInstanceState)
 
         setData()
+        initLaunchers()
         initAdapters()
         setClickEvents()
         initObservers()
+    }
+
+    private fun initLaunchers() {
+        createActivityResultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                viewModel.getHomeData()
+            }
+        }
+
+        detailActivityResultLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                viewModel.getHomeData()
+            }
+        }
     }
 
     private fun initObservers() {
