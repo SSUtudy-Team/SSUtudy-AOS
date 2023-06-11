@@ -133,7 +133,11 @@ class HomeFragment : BaseDataBindingFragment<FragmentHomeBinding>(R.layout.fragm
 
     private fun setCreateBtnClickEvent() {
         binding.btnHomeCreate.setOnClickListener {
-            startActivity(Intent(requireContext(), CreateActivity::class.java))
+            createActivityResultLauncher.launch(
+                Intent(
+                    requireActivity(), CreateActivity::class.java
+                )
+            )
         }
     }
 
