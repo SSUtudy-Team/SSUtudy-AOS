@@ -243,7 +243,9 @@
                     android:paddingEnd="8dp"
                     android:text="@={vm.openChatLink}"
                     android:textAppearance="@style/R16"
-                    app:layout_constraintTop_toBottomOf="@id/tv_create_open_chat" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_create_open_chat"
+                    app:layout_goneMarginBottom="16dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
