@@ -69,11 +69,6 @@ class MyStudyAdapter(
         if (holder is MyStudyHeaderViewHolder) holder.onBind()
         else {
             (holder as? MyStudyContentViewHolder)?.onBind(currentList[position])
-            if (position == itemCount - 1) {
-                val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-                params.marginEnd = holder.itemView.context.dpToPx(10) // 원하는 마진 값을 설정하세요.
-                holder.itemView.layoutParams = params
-            }
         }
     }
 
