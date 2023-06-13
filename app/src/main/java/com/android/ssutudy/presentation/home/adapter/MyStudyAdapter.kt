@@ -8,13 +8,11 @@ import com.android.ssutudy.data.remote.model.ResponseHomeDto.Data.JoinStudy
 import com.android.ssutudy.databinding.ItemMySsutudyContentBinding
 import com.android.ssutudy.databinding.ItemMySsutudyHeaderBinding
 import com.android.ssutudy.util.DiffUtilCallback
-import com.android.ssutudy.util.extensions.dpToPx
 
 class MyStudyAdapter(
     private val startCreateActivity: () -> Unit,
     private val startDetailActivity: (String) -> Unit,
-) :
-    ListAdapter<JoinStudy, RecyclerView.ViewHolder>(DiffUtilCallback<JoinStudy>()) {
+) : ListAdapter<JoinStudy, RecyclerView.ViewHolder>(DiffUtilCallback<JoinStudy>()) {
     override fun getItemViewType(position: Int): Int {
         return if (position == HEADER) HEADER
         else CONTENT
@@ -23,8 +21,7 @@ class MyStudyAdapter(
     class MyStudyHeaderViewHolder(
         private val binding: ItemMySsutudyHeaderBinding,
         private val startCreateActivity: () -> Unit,
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind() {
             binding.root.setOnClickListener {
                 startCreateActivity.invoke()
@@ -35,8 +32,7 @@ class MyStudyAdapter(
     class MyStudyContentViewHolder(
         private val binding: ItemMySsutudyContentBinding,
         private val startDetailActivity: (String) -> Unit,
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(item: JoinStudy) {
             with(binding.tvItemMyStudy) {
                 text = item.title
@@ -50,16 +46,12 @@ class MyStudyAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == HEADER) {
             val binding = ItemMySsutudyHeaderBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
             MyStudyHeaderViewHolder(binding, startCreateActivity)
         } else {
             val binding = ItemMySsutudyContentBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
             MyStudyContentViewHolder(binding, startDetailActivity)
         }
